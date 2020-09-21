@@ -1,0 +1,13 @@
+<header id="topnav"> 
+<app-header (titleChange)="changeTitle($event)"></app-header>
+<app-sidebar [data]="links"  (titleChange)="changeTitle($event)"></app-sidebar>
+</header>
+
+<div class="wrapper">
+    <div class="container-fluid">
+    <app-page-title  [title]="pageTitle"></app-page-title>       
+     <router-outlet></router-outlet>
+
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,164 @@
+
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="widget-bg-color-icon card-box">
+              <div class="bg-icon bg-info pull-left">
+                  <i class="md  md-shopping-cart text-white"></i>
+              </div>
+              <div class="text-right">
+                  <h3 class="text-dark">{{totalOrders}}</h3>
+                  <p class="text-muted mb-0">Total Orders</p>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="widget-bg-color-icon card-box">
+              <div class="bg-icon bg-pink pull-left">
+                  <i class="md  md-directions-car text-white"></i>
+              </div>
+              <div class="text-right">
+                  <h3 class="text-dark">{{totalRiders}} </h3>
+                  <p class="text-muted mb-0">Total Riders</p>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="widget-bg-color-icon card-box">
+              <div class="bg-icon bg-purple pull-left">
+                  <i class="md  md-account-box text-white"></i>
+              </div>
+              <div class="text-right">
+                  <h3 class="text-dark">{{totalUsers}}</h3>
+                  <p class="text-muted mb-0">Customers</p>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="widget-bg-color-icon card-box">
+              <div class="bg-icon bg-success pull-left">
+                  <i class="md  md-attach-money text-white"></i>
+              </div>
+              <div class="text-right">
+                  <h3 class="text-dark">1230</h3>
+                  <p class="text-muted mb-0">Total Revenue</p>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
+  </div>
+
+
+<!-- <div>
+    <div>
+        <div class="row">
+            <div class="col-4">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="row text-center">
+                            <div class="col-md-4 ">
+                                <mat-icon color="primary">playlist_add_check</mat-icon>
+                            </div>
+                            <div class="col-md-8 ">
+                                <h4>{{completeOrders}}</h4>
+                                <p class="lead"> Completed Orders</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                   
+                    </mat-card>
+        
+            </div>
+            
+            <div class="col-4">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="row text-center">
+                            <div class="col-md-4 ">
+                                <mat-icon color="warn">hourglass_empty</mat-icon>
+                            </div>
+                            <div class="col-md-8 ">
+                                <h4>{{pendingOrders}}</h4>
+                                <p class="lead"> Pending Orders</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                   
+                    </mat-card>
+        
+            </div>
+
+            <div class="col-4">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="row text-center">
+                            <div class="col-md-4 ">
+                                <mat-icon color="accent">attach_money</mat-icon>
+                            </div>
+                            <div class="col-md-8 ">
+                                <h4>6745</h4>
+                                <p class="lead"> Total Revenue</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                   
+                    </mat-card>
+        
+            </div>
+
+
+         
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>New Customers</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <table mat-table [dataSource]="dataSource"  >
+    
+              
+                            <ng-container matColumnDef="id">
+                              <th mat-header-cell *matHeaderCellDef> No. </th>
+                              <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+                            </ng-container>
+                          
+                          
+                            <ng-container matColumnDef="username">
+                              <th mat-header-cell *matHeaderCellDef>  Name </th>
+                              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="phone">
+                              <th mat-header-cell *matHeaderCellDef> Phone </th>
+                              <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                              </ng-container>
+                            <ng-container matColumnDef="createdAt">
+                              <th mat-header-cell *matHeaderCellDef> Created At  </th>
+                              <td mat-cell *matCellDef="let element"> {{element.createdAt | dateAgo }} </td>
+                            </ng-container>
+                  
+                          
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+        </div>
+      
+    </div>
+  </div> -->

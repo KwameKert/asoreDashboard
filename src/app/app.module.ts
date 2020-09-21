@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent, SidebarComponent, FooterComponent, AuthLayoutComponent, SuperAdminComponent, FleetManangerComponent, PageTitleComponent} from './layouts';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './interceptors';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 
 
@@ -27,13 +30,16 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    //NgxUiLoaderModule,
+    NgxUiLoaderModule,
       ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       preventDuplicates: true,
   }), 
   ],
-  providers: [],
+  providers: [
+    DatePipe, 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
