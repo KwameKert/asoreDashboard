@@ -63,7 +63,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    MatMenuModule,
   ]
 })
 export class SharedModule { }
