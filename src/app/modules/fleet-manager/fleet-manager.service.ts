@@ -26,5 +26,8 @@ export class FleetManagerService extends CrudService<FleetManager> {
     super(_httpClient, "user/admin")
   }
 
+  public addManager(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/user/admin`, data);
+  }
  
 }

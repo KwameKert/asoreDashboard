@@ -62,8 +62,8 @@ export class ListManagerComponent implements OnInit {
   addManager(){
 
     const dialogRef = this.dialog.open(AddManagerComponent, {
-      width: '820px',
-      height: '520px'
+      width: '620px',
+      height: '320px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -72,9 +72,7 @@ export class ListManagerComponent implements OnInit {
        this.fetchFleets()
       }
     }, error=>{
-      // this._toastr.error("Oops an error. 🥺","",{
-      //   timeOut:2000
-      // })
+
     });
   }
 }
