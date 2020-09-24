@@ -19,7 +19,7 @@ export class DeleteItemComponent implements OnInit {
   isValid: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<DeleteItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private _deleteService: DeleteService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, public _deleteService: DeleteService) { }
 
   ngOnInit(): void {
   }
@@ -33,14 +33,15 @@ export class DeleteItemComponent implements OnInit {
 
     try{
       let {_id, model} = this.data;
-      let resObj = await  this._deleteService.deleteItem(_id, model);
+      console.log(this.data)
+      let resObj = await this._deleteService.delete(_id, model);
       if(resObj){
         let evt = {
           data: resObj.data,
           event: true
         }
         this.dialogRef.close(evt);
-      }
+     }
   
     }catch(error){
 

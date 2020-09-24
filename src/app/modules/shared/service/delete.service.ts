@@ -8,10 +8,10 @@ import { environment } from 'src/environments/environment';
 })
 export class DeleteService {
   private _baseUrl :String = environment.api_host;
-  public _httpClient: HttpClient
-  constructor() { }
+ 
+  constructor( public _httpClient: HttpClient) { }
   
-  deleteItem(id: string, module: string){
+  public delete(id: string, module: string){
     return this._httpClient.delete<ApiResponse<any>>(`${this._baseUrl}/${module}/${id}`).toPromise();
    }
 

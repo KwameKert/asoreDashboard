@@ -7,28 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FleetManangerComponent implements OnInit {
 
-  sideBarOpen = true;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  toggleSidebar(){
-    this.sideBarOpen = !this.sideBarOpen;
-  }
-
-  menuLinks: Array<object> = [
-    {name: 'dashboard',url: '/admin/dashboard', icon: 'home'},
-    {name: 'Orders', url: 'election/list',  icon: 'shopping_basket'},
-    {name: 'Vehicle', url: '/fleet_manager/vehicle', icon: 'directions_car'},
-    {name: 'Riders', url: '/fleet_manager/rider', icon: 'motorcycle'}
+  pageTitle: string;
+  links: Array<object> = [
+    {name: "Dashboard", icon: "md md-dashboard", url: "/fleet_manager/dashboard"},
+    {name: "Vehicle", icon: "fa fa-car", url: "/"},
+    {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/"},
+    {name: "Riders", icon: "fa  fa-users", url: "/"}
   ];
 
-  data: any = {
-    links :this.menuLinks,
-    name : 'Fleet Manager',
-    image : '../../../assets/images/fleet_manager.png'
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
+  changeTitle(title: string){
+    this.pageTitle = title;
+  }
+
+  loadLinks(){
+
+  }
 
 }

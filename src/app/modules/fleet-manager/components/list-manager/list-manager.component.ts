@@ -53,17 +53,13 @@ export class ListManagerComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '650px',
       height: '280px',
-      data: {model: "users/admin", _id, word: "DELETE manager"}
+      data: {model: "user/admin", _id, word: "DELETE manager"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.event){
-        
-        // this._snackBar.open("User Deleted 🙂  ", "", {
-        //   duration: 2000,
-        // });
+        this.fetchFleets()
       }else{
-
         // this._toastr.error("Oops an error. 🥺","",{
         //   timeOut:2000
         // })
