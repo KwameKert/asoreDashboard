@@ -53,13 +53,24 @@ export class ListAdminComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.loadAllUsers();
     }, error=>{
      
     });
   }
 
   editAdmin(data: any){
-    
+    const dialogRef = this.dialog.open(AddAdminComponent, {
+      width: '800px',
+      height: '400px',
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadAllUsers();
+    }, error=>{
+     
+    });
   }
 
   viewAdmin(admin: any){
@@ -75,8 +86,24 @@ export class ListAdminComponent implements OnInit {
     });
   }
 
-  deleteAdmin(){
-    
+  deleteAdmin(_id: string){
+  
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      width: '650px',
+      height: '280px',
+      data: {model: "user/admin", _id, word: "DELETE admin"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event){
+        this.loadAllUsers()
+      }else{
+        // this._toastr.error("Oops an error. 🥺","",{
+        //   timeOut:2000
+        // })
+      }
+    });
+
   }
 
 }
