@@ -20,7 +20,7 @@ export class SuperAdminComponent implements OnInit {
   },
     {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/"},
     {name: "Users", icon: "fa  fa-users", links: [
-      {name: "Customers", url: "/"},
+      {name: "Customers", url: "/admin/customers"},
       {name: "Admins", url: "/admin/admins"}
     ]},
     {name: "Settings", icon: "fa fa-gears", links:  [
