@@ -16,6 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { DeleteItemComponent } from './delete-item/delete-item.component';
 
 // import { AvatarModule } from 'ngx-avatar/lib/avatar.module';
 // import { ToastrModule } from 'ngx-toastr';
@@ -24,7 +25,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
-  declarations: [PreloaderComponent, DateAgoPipe, ExcerptFilter],
+  declarations: [PreloaderComponent, DateAgoPipe, ExcerptFilter, DeleteItemComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -65,6 +66,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MatDialogModule,
     NgxSkeletonLoaderModule,
     MatMenuModule,
-  ]
+  ],
+  entryComponents: [DeleteItemComponent]
 })
 export class SharedModule { }
