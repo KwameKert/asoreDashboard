@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
+import { AdminService } from '../../admin.service';
+import { ViewAdminComponent } from '../view-admin/view-admin.component';
+import { AddAdminComponent } from '../add-admin/add-admin.component';
+
 
 @Component({
   selector: 'app-list-admin',
@@ -7,9 +14,69 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAdminComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: any = ['username', 'email', 'role', 'actions']
+  isLoading: boolean = true;
+  isEmpty: boolean = false;
+  dataSource: any ;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  constructor(private _adminService: AdminService,  public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.loadAllUsers();
+  }
+
+  async  loadAllUsers(){
+
+    try{
+      this.isLoading = true;
+      let resObject =  await this._adminService.query({role: "ADMIN", status:'active'});
+      console.log(resObject)
+      if(resObject){
+        this.dataSource = resObject.data;
+        console.log(this.dataSource)
+        this.dataSource.paginator = this.paginator;
+      }
+      
+    }catch(error){
+      console.error(error)
+    }finally{
+      this.isLoading = false;
+    }
+  
+  }
+
+  addAdmin(){
+    const dialogRef = this.dialog.open(AddAdminComponent, {
+      width: '800px',
+      height: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    }, error=>{
+     
+    });
+  }
+
+  editAdmin(data: any){
+    
+  }
+
+  viewAdmin(admin: any){
+    const dialogRef = this.dialog.open(ViewAdminComponent, {
+      width: '600px',
+      height: '300px',
+      data: admin
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    }, error=>{
+     
+    });
+  }
+
+  deleteAdmin(){
+    
   }
 
 }

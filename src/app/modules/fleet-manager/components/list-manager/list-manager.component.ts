@@ -30,7 +30,7 @@ export class ListManagerComponent implements OnInit {
     try{
       this.ngxService.start()
 
-      let response = await this._fleetService.query({role: "FLEET MANAGER"});
+      let response = await this._fleetService.query({role: "FLEET MANAGER", status:'active'});
       if(response.data && response.data.length != 0){
         let result = response.data;
         this.dataSource = result;
