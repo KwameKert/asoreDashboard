@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { AuthLayoutComponent, SuperAdminComponent } from './layouts';
+import { AuthLayoutComponent, SuperAdminComponent, FleetManangerComponent } from './layouts';
 
 const routes: Routes = [
   {
@@ -16,6 +16,13 @@ const routes: Routes = [
     component: SuperAdminComponent,
     loadChildren: () => import('./views/admin/admin.module')
                        .then(m => m.AdminModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'manager', 
+    component: FleetManangerComponent,
+    loadChildren: () => import('./views/fleet-manager/fleet-manager.module')
+                       .then(m => m.FleetManagerModule),
     canActivate: [AuthGuard]
   },
 ];

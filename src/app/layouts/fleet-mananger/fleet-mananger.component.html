@@ -1,5 +1,5 @@
 <header id="topnav"> 
-    <app-header (titleChange)="changeTitle($event)"></app-header>
+    <app-header (titleChange)="changeTitle($event)" [role]="role"></app-header>
     <app-sidebar [data]="links"  (titleChange)="changeTitle($event)"></app-sidebar>
     </header>
     

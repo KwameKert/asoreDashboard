@@ -1,0 +1,42 @@
+
+<h3 mat-dialog-title>View Vehicle 
+    <span *ngIf="data.status == 'inactive'" class="badge badge-warning"> {{data.status}} </span> 
+    <span *ngIf="data.status == 'active'" class="badge badge-success"> {{data.status}} </span>
+</h3>
+<hr>
+<div mat-dialog-content class="container">
+    <div  class="row justify-content-center pt-4 ">
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <p><b>Model:   </b>{{data.model | titlecase}}</p>
+                    <p><b>Brand:  </b> {{data.brand | titlecase }}</p>
+                    <p><b>Mileage: </b> {{data.mileage }} km</p>
+                    <p><b>Capacity: </b>{{data.capacity }} cc</p>
+                </div>
+                <div class="col-6">
+
+            <p><b>Year:  </b> {{data.year | titlecase}}</p>
+            <p><b>Fuel: </b>  {{data.fuelType | titlecase }}</p>
+            <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p><b>Description: </b> {{data.description }}</p>
+                </div>
+            </div>
+           
+        </div>
+ 
+    
+    </div>
+    
+</div>
+<div mat-dialog-actions class="float-right">
+
+    <button mat-button mat-dialog-close>Close</button>
+    
+  </div>

@@ -2,14 +2,14 @@
     <div class="col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
-                Rider List 
-                <button mat-raised-button color="primary" class="float-right mb-1" (click)="addRider()"> <mat-icon>add</mat-icon> New Rider</button>
+                All Vehicles
+                <button mat-raised-button color="primary" class="float-right mb-1" (click)="addVehicle()"> <mat-icon>add</mat-icon> New Vehicle</button>
             </div>
 
             <div class="card-body">
-                <div class="row" style="width:100%"  *ngIf="!isEmpty">
+                <div class="row" style="width:100%" >
         
-                    <div *ngIf="isLoading ; else elseBlock" >
+                    <div *ngIf="isLoading; else elseBlock" >
                       <ngx-skeleton-loader
                       count="5"
                       [theme]="{
@@ -22,31 +22,33 @@
                     </div>
                  
               
-                     <ng-template #elseBlock >
+                     <ng-template #elseBlock>
                        
-                      <table mat-table [dataSource]="dataSource"  *ngIf="!isEmpty"  >
+                      <table mat-table [dataSource]="dataSource"  >
               
-                        <ng-container matColumnDef="pic">
+                        <!-- <ng-container matColumnDef="pic">
                           <th mat-header-cell *matHeaderCellDef> # </th>
-                          <td mat-cell *matCellDef="let element"> <ngx-avatar name="{{element.firstName}} {{element.lastName}}" ></ngx-avatar> </td>
-                        </ng-container>
+                          <td mat-cell *matCellDef="let element"> <ngx-avatar name="{{element.brand}}" ></ngx-avatar> </td>
+                        </ng-container> -->
                       
                       
-                        <ng-container matColumnDef="full name">
-                          <th mat-header-cell *matHeaderCellDef> Full Name </th>
-                          <td mat-cell *matCellDef="let element"> {{element.firstName | titlecase}} {{element.lastName | titlecase}} </td>
+                        <ng-container matColumnDef="model">
+                          <th mat-header-cell *matHeaderCellDef> Model </th>
+                          <td mat-cell *matCellDef="let element"> {{element.model}} </td>
                         </ng-container>
               
                       
                         <!-- Weight Column -->
-                        <ng-container matColumnDef="address">
-                          <th mat-header-cell *matHeaderCellDef> Address </th>
-                          <td mat-cell *matCellDef="let element"> {{element.address | titlecase}} </td>
+                        <ng-container matColumnDef="mileage">
+                          <th mat-header-cell *matHeaderCellDef> Mileage </th>
+                          <td mat-cell *matCellDef="let element"> {{element.mileage}} </td>
                         </ng-container>
-                        <ng-container matColumnDef="phone">
-                          <th mat-header-cell *matHeaderCellDef> phone </th>
+                      
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="brand">
+                          <th mat-header-cell *matHeaderCellDef> Brand </th>
                           <td mat-cell *matCellDef="let element">
-                            {{element.phone}}
+                            {{element.brand}}
                            </td>
                         </ng-container>
           
@@ -60,8 +62,7 @@
                         <ng-container matColumnDef="status">
                           <th mat-header-cell *matHeaderCellDef> Status </th>
                           <td mat-cell *matCellDef="let element">
-                            <span *ngIf="element.status == 'active'" class="badge badge-success"> {{element.status}} </span> 
-                            <span *ngIf="element.status == 'inactive'" class="badge badge-warning"> {{element.status}} </span> 
+                            {{element.status}}
                            </td>
                         </ng-container>
                       
@@ -73,18 +74,18 @@
                               <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #belowMenu="matMenu" yPosition="below">
-                              <button mat-menu-item (click)="viewRider(element)">
+                              <button mat-menu-item (click)="viewVehicle(element)">
                                 <mat-icon>visibility</mat-icon>
-                                <span>View Rider </span>
+                                <span>View Vehicle </span>
                               </button>
           
-                              <button mat-menu-item (click)="editRider(element)">
+                              <button mat-menu-item (click)="editVehicle(element)">
                                 <mat-icon>edit</mat-icon>
-                                <span>Edit Rider </span>
+                                <span>Edit Vehicle </span>
                               </button>
-                              <button mat-menu-item (click)="deleteRider(element.id)">
+                              <button mat-menu-item (click)="deleteVehicle(element.id)">
                                 <mat-icon>clear</mat-icon>
-                                <span>Delete Rider</span>
+                                <span>Delete Vehicle</span>
                               </button>
                             </mat-menu>
                           </td>
@@ -95,18 +96,13 @@
                       </table>
                      </ng-template>
           
-                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="float-right"></mat-paginator>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                
           
-              
-                </div>
-            
-                <div class="row justify-content-center text-center" style="width: 100%;">
-                  <div class="col-9">
-                    <div class="alert alert-info" *ngIf="isEmpty">No riders found. </div>
-                  </div>
+               
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+

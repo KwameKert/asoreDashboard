@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/authentication/service/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/modules/authentication/service/auth.service
 })
 export class HeaderComponent implements OnInit {
   @Output() titleChange: EventEmitter<any> = new EventEmitter<any>();
+  @Input() role;
   profileLinks: Array<object> = [
     {name: 'Profile', icon: 'zmdi zmdi-account-circle', url: "/settings/profile"},
     {name: 'Settings', icon: 'zmdi zmdi-account-circle', url: "/settings/password"} 

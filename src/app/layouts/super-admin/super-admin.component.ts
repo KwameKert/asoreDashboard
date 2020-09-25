@@ -9,6 +9,7 @@ export class SuperAdminComponent implements OnInit {
 
 
   pageTitle: string;
+  role: string = "Administrator";
   links: Array<object> = [
     {name: "Dashboard", icon: "md md-dashboard", url: "/admin/dashboard"},
     {name: "Fleets", icon: "fa fa-car", url: "/", links: [{
