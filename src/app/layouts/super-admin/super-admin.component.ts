@@ -18,7 +18,7 @@ export class SuperAdminComponent implements OnInit {
       name: "Riders", url: "/"
     }]
   },
-    {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/"},
+    {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/admin/orders"},
     {name: "Users", icon: "fa  fa-users", links: [
       {name: "Customers", url: "/admin/customers"},
       {name: "Admins", url: "/admin/admins"}
