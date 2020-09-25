@@ -16,7 +16,7 @@ export class AddRiderComponent implements OnInit {
 
   vehicles: any;
   riderForm: FormGroup;
-  constructor(private _fb: FormBuilder,  private ngxService: NgxUiLoaderService, private _riderService: RiderService,  public dialogRef: MatDialogRef<AddVehicleComponent>, private _vehicleService: VehicleService, ) { }
+  constructor(private _fb: FormBuilder,  private ngxService: NgxUiLoaderService, private _riderService: RiderService,  public dialogRef: MatDialogRef<AddRiderComponent>, private _vehicleService: VehicleService, ) { }
 
   ngOnInit(): void {
 
@@ -42,7 +42,7 @@ export class AddRiderComponent implements OnInit {
  async saveRider(data: any){
 
     try{
-      this.ngxService.start()
+     this.ngxService.start()
 
       let resObject = await this._riderService.addItem(data);
       this.dialogRef.close({event:true});
@@ -58,7 +58,6 @@ export class AddRiderComponent implements OnInit {
   async loadActiveVehicles(){
     try{
       this.ngxService.start()
-
       let resObject = await this._vehicleService.query({status: "active"});
       this.vehicles = resObject.data;
 

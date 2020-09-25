@@ -1,1 +1,112 @@
-<p>edit-vehicle works!</p>
+
+<h1 mat-dialog-title>Add Vehicle</h1>
+<form [formGroup]="vehicleForm" (ngSubmit)="saveVehicle()">
+<div mat-dialog-content class="container">
+   
+    <div class="row justify-content-center">
+        <div class="col-md-10 ">
+          
+    
+                     <div class="row">
+                         <div class="col-6">
+                            <mat-form-field appearance="outline"  >
+                                <mat-label>Model </mat-label>
+                                <input matInput   formControlName="model" >
+                                <mat-error *ngIf="vehicleForm.get('model').invalid"> Invalid input </mat-error>
+                              </mat-form-field>
+                         </div>
+                         <div class="col-6">
+                            <mat-form-field appearance="outline"  >
+                                <mat-label>Brand</mat-label>
+                                <input matInput  formControlName="brand" >
+                                <mat-error *ngIf="vehicleForm.get('brand').invalid"> Invalid input </mat-error>
+                              </mat-form-field>
+                         </div>
+                     </div>
+              
+            
+                 
+                  <div class="row">
+                      <div class="col-6">
+                        <mat-form-field appearance="outline"  >
+                            <mat-label>Color</mat-label>
+                            <input matInput  formControlName="color" >
+                            <mat-error *ngIf="vehicleForm.get('color').invalid"> Invalid input </mat-error>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-6">
+                        <mat-form-field appearance="outline"  >
+                            <mat-label>Mileage (km)</mat-label>
+                            <input matInput   formControlName="mileage" type="number">
+                            <mat-error *ngIf="vehicleForm.get('mileage').invalid"> Invalid input </mat-error>
+                          </mat-form-field>
+                      </div>
+                  </div>
+    
+                  <div class="row">
+                      <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Year</mat-label>
+                            <mat-select  formControlName="year">
+                              <mat-option>None</mat-option>
+                              <mat-option *ngFor="let year of years" [value]="year.value">
+                                {{year.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Fuel Type</mat-label>
+                            <mat-select  formControlName="fuelType">
+                              <mat-option>None</mat-option>
+                              <mat-option *ngFor="let fuel of fuels" [value]="fuel.value">
+                                {{fuel.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <mat-form-field appearance="outline"  >
+                        <mat-label>Capacity (cc)</mat-label>
+                        <input matInput   formControlName="capacity" type="number">
+                        <mat-error *ngIf="vehicleForm.get('capacity').invalid"> Invalid input </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Status</mat-label>
+                        <mat-select  formControlName="status">
+                          <mat-option>None</mat-option>
+                          <mat-option value="active" >Active</mat-option>
+                          <mat-option value="inactive" >Inactive</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+        
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <mat-form-field appearance="outline" style="width: 90%;">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput  formControlName="description" rows="2" cols="8"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>           
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions class="float-right">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" class="float-right " type="submit"  [disabled]="!vehicleForm.valid"> <mat-icon>done</mat-icon> Save Vehicle</button>
+        
+</div>
+</form>
+
+
+

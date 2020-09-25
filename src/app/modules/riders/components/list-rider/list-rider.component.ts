@@ -46,10 +46,10 @@ export class ListRiderComponent implements OnInit {
 
 
 
-  deleteRider(id: Number){
+  deleteRider(_id: Number){
     let data = {
       module: 'users',
-      id
+      data: {model: "rider", _id, word: "DELETE rider"}
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',
@@ -59,6 +59,7 @@ export class ListRiderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.event){
+        this.loadRiders();
         
         // this._snackBar.open("User Deleted 🙂  ", "", {
         //   duration: 2000,

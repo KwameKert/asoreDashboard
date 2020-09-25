@@ -63,28 +63,19 @@ export class ListVehicleComponent implements OnInit {
 
 
 
-  deleteVehicle(id: Number){
-    let data = {
-      module: 'users',
-      id
-    }
+  deleteVehicle(_id: Number){
+   
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      width: '550px',
-      height: '180px',
-      data: data
+      width: '600px',
+      height: '270px',
+      data: {model: "vehicle", _id, word: "DELETE vehicle"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.event){
-        
-        // this._snackBar.open("User Deleted 🙂  ", "", {
-        //   duration: 2000,
-        // });
+        this.loadVehicles();
       }else{
 
-        // this._toastr.error("Oops an error. 🥺","",{
-        //   timeOut:2000
-        // })
       }
     });
   }
