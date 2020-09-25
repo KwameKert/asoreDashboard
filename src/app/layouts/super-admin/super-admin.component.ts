@@ -15,7 +15,7 @@ export class SuperAdminComponent implements OnInit {
       name: "Fleet Managers", url: "/admin/fleet_managers"
     },
     {
-      name: "Riders", url: "/"
+      name: "Riders", url: "/admin/riders"
     }]
   },
     {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/admin/orders"},
