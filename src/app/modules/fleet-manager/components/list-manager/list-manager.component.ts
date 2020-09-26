@@ -18,6 +18,7 @@ export class ListManagerComponent implements OnInit {
   dataSource: any = null;
   isLoading: boolean = false;
   isEmpty: boolean = false;
+  
 
   constructor(private _fleetService: FleetManagerService,  private ngxService: NgxUiLoaderService, public dialog: MatDialog) { }
 
@@ -70,7 +71,7 @@ export class ListManagerComponent implements OnInit {
 
   editManager(data: any){
     const dialogRef = this.dialog.open(AddManagerComponent, {
-      width: '620px',
+      width: '820px',
       height: '320px',
       data
     });
@@ -89,7 +90,7 @@ export class ListManagerComponent implements OnInit {
   viewManager(data: any){
     const dialogRef = this.dialog.open(ViewManagerComponent, {
       width: '800px',
-      height: '400px',
+      height: '500px',
       data
     });
 
