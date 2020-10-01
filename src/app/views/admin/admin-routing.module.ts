@@ -10,11 +10,80 @@ import { ListRiderComponent } from 'src/app/modules/riders/components/list-rider
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
-  {path: 'fleet_managers', component: ListManagerComponent},
-  {path: 'admins', component: ListAdminComponent},
-  {path: 'customers', component: ListCustomerComponent},
-  {path: 'orders', component: ListOrdersComponent},
-  {path: 'riders', component: ListRiderComponent},
+  {
+    path: 'fleet_managers',
+    component: ListManagerComponent,
+    data: {
+      title: 'manager',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/admin/dashboard'
+        },
+        {
+          label: 'fleet manager',
+          url: ''
+        }
+      ]
+    },
+    },
+  {path: 'admins', component: ListAdminComponent,
+  data: {
+      title: 'admin',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/admin/dashboard'
+        },
+        {
+          label: 'administrators',
+          url: ''
+        }
+      ]
+    },},
+  {path: 'customers', component: ListCustomerComponent,
+  data: {
+    title: 'customer',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'customer',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'orders', component: ListOrdersComponent,
+  data: {
+    title: 'order',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'order',
+        url: ''
+      }
+    ]
+  },
+},
+  {path: 'riders', component: ListRiderComponent,
+  data: {
+    title: 'riders',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'riders',
+        url: ''
+      }
+    ]
+  },},
 
 
 ]
