@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 
 @Component({
   selector: 'app-fleet-mananger',
@@ -16,9 +17,23 @@ export class FleetManangerComponent implements OnInit {
     {name: "Riders", icon: "fa  fa-users", url: "/manager/riders"}
   ];
 
-  constructor() { }
-
+  breadcrumbConfig: object = {
+    bgColor: '#eee',
+    fontSize: '14px',
+    fontColor: '#0275d8',
+    lastLinkColor: '#000',
+    symbol: ' >',
+  }
+   breadcrumbs  =  [
+    {
+      label:'home',
+      url: ''
+    }]
+  constructor(private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) { }
+  
   ngOnInit(): void {
+    
+    this.ngDynamicBreadcrumbService.updateBreadcrumb(this.breadcrumbs)
   }
 
   changeTitle(title: string){

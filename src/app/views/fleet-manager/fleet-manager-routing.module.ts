@@ -8,9 +8,53 @@ import { FleetRidersComponent } from 'src/app/modules/riders/components/fleet-ri
 
 
 const routes: Routes = [
-  {path: 'dashboard', component: FleetManagerComponent},
-  {path: 'vehicles', component: ListVehicleComponent},
-  {path: 'riders', component: FleetRidersComponent}
+  {
+    path: 'dashboard',
+    component: FleetManagerComponent, 
+    data: {
+      title: 'dashboard',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/manager/dashboard'
+        }
+      ]
+    },
+  },
+  {
+    path: 'vehicles', 
+    component: ListVehicleComponent,
+    data: {
+      title: 'vehicle',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/manager/dashboard'
+        },
+        {
+          label: 'vehicle',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'riders', 
+    component: FleetRidersComponent,
+    data: {
+      title: 'vehicle',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/manager/dashboard'
+        },
+        {
+          label: 'riders',
+          url: ''
+        }
+      ]
+    },
+  }
   // {path: 'orders', component: ''},
   // {path: 'vehicle', component: ''},
   // {path: 'riders', component: ''},

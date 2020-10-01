@@ -5,8 +5,17 @@
     
     <div class="wrapper">
         <div class="container-fluid">
-        <app-page-title  [title]="pageTitle"></app-page-title>       
-         <router-outlet></router-outlet>
+         <div class="row">
+             <div class="col-10">
+                <app-page-title  [title]="pageTitle"></app-page-title> 
+             </div>
+             <div class="col-2 pt-2">
+                <app-ng-dynamic-breadcrumb [bgColor]="breadcrumbConfig['bgColor']" [fontSize]="breadcrumbConfig['fontSize']" [fontColor]="breadcrumbConfig['fontColor']" [lastLinkColor]="breadcrumbConfig['lastLinkColor']" [symbol]="breadcrumbConfig['symbol']"></app-ng-dynamic-breadcrumb>   
+             </div>     
+        
+         </div>   
+       
+        <router-outlet></router-outlet>
     
     </div>
     </div>

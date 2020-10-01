@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './interceptors';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
+import {NgDynamicBreadcrumbModule} from 'ng-dynamic-breadcrumb';
 
 
 
@@ -23,13 +24,14 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
      AuthLayoutComponent,
       SuperAdminComponent, 
       FleetManangerComponent,
-       PageTitleComponent
+       PageTitleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgDynamicBreadcrumbModule,
     NgxUiLoaderModule,
       ToastrModule.forRoot({
       positionClass: 'toast-top-right',
