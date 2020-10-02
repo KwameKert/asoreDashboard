@@ -4,17 +4,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AddRiderComponent } from 'src/app/modules/riders/components/add-rider/add-rider.component';
 import { DataloadService } from 'src/app/modules/shared/service/dataload.service';
-import { SettingService } from '../../setting.service';
+import { PricingService } from '../../pricing.service';
 
 @Component({
-  selector: 'app-add-setting',
-  templateUrl: './add-setting.component.html',
-  styleUrls: ['./add-setting.component.scss']
+  selector: 'app-add-pricing',
+  templateUrl: './add-pricing.component.html',
+  styleUrls: ['./add-pricing.component.scss']
 })
-export class AddSettingComponent implements OnInit {
+export class AddPricingComponent implements OnInit {
 
   settingForm: FormGroup;
-  constructor(private _fb: FormBuilder,  private ngxService: NgxUiLoaderService, private _settingService: SettingService,  public dialogRef: MatDialogRef<AddRiderComponent>,  @Inject(MAT_DIALOG_DATA) public data: any, private _dataService: DataloadService) { }
+  constructor(private _fb: FormBuilder,  private ngxService: NgxUiLoaderService, private _pricingService: PricingService,  public dialogRef: MatDialogRef<AddRiderComponent>,  @Inject(MAT_DIALOG_DATA) public data: any, private _dataService: DataloadService) { }
 
    ngOnInit(): void {
   
@@ -55,10 +55,10 @@ export class AddSettingComponent implements OnInit {
      this.ngxService.start()
 
      if(this.data){
-      let resObject = await this._settingService.updateItem(data);
+      let resObject = await this._pricingService.updateItem(data);
       this.dialogRef.close({event:true});
      }else{
-      let resObject = await this._settingService.addItem(data);
+      let resObject = await this._pricingService.addItem(data);
       this.dialogRef.close({event:true});
      }
      

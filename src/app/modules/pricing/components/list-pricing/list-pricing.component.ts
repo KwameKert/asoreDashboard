@@ -2,23 +2,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
-import { SettingService } from '../../setting.service';
-import { AddSettingComponent } from '../add-setting/add-setting.component';
-import { ViewSettingComponent } from '../view-setting/view-setting.component';
+import { PricingService } from '../../pricing.service';
+import { AddPricingComponent } from '../add-pricing/add-pricing.component';
+import { ViewPricingComponent } from '../view-pricing/view-pricing.component';
 
 @Component({
-  selector: 'app-list-settings',
-  templateUrl: './list-settings.component.html',
-  styleUrls: ['./list-settings.component.scss']
+  selector: 'app-list-pricing',
+  templateUrl: './list-pricing.component.html',
+  styleUrls: ['./list-pricing.component.scss']
 })
-export class ListSettingsComponent implements OnInit {
+export class ListPricingComponent implements OnInit {
 
   displayedColumns: Array<string> = ['minute', 'meter', 'flat', 'created_on','status', 'actions'];
   isLoading: boolean = true;
   dataSource: any = null;
   isEmpty: boolean = false;
   
-  constructor(private _settingService: SettingService,  public dialog: MatDialog) { }
+  constructor(private _pricingService: PricingService,  public dialog: MatDialog) { }
 
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -32,7 +32,7 @@ export class ListSettingsComponent implements OnInit {
   async loadSettings(){
     try{
       this.isLoading = true;
-      let settings = await this._settingService.query({status: "live"});
+      let settings = await this._pricingService.query({status: "live"});
         this.dataSource = settings.data;
         this.dataSource.paginator = this.paginator;
       
@@ -74,7 +74,7 @@ export class ListSettingsComponent implements OnInit {
 
   editSetting(setting: any){
     console.log(setting)
-    const dialogRef = this.dialog.open(AddSettingComponent, {
+    const dialogRef = this.dialog.open(AddPricingComponent, {
       width: '820px',
       height: '380px',
       data: setting
@@ -95,7 +95,7 @@ export class ListSettingsComponent implements OnInit {
  
   addSetting(){
 
-    const dialogRef = this.dialog.open(AddSettingComponent, {
+    const dialogRef = this.dialog.open(AddPricingComponent, {
       width: '820px',
       height: '380px'
     });
@@ -114,7 +114,7 @@ export class ListSettingsComponent implements OnInit {
   }
 
   viewSetting(data: any){
-    const dialogRef = this.dialog.open(ViewSettingComponent, {
+    const dialogRef = this.dialog.open(ViewPricingComponent, {
       width: '600px',
       height: '350px',
       data

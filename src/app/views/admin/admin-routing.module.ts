@@ -7,7 +7,7 @@ import { ListAdminComponent } from 'src/app/modules/admins/components/list-admin
 import { ListCustomerComponent } from 'src/app/modules/customers/components/list-customer/list-customer.component';
 import { ListOrdersComponent } from 'src/app/modules/orders/component/list-orders/list-orders.component';
 import { ListRiderComponent } from 'src/app/modules/riders/components/list-rider/list-rider.component';
-import { ListSettingsComponent } from 'src/app/modules/settings/components/list-settings/list-settings.component';
+import { ListPricingComponent } from 'src/app/modules/pricing/components/list-pricing/list-pricing.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -86,16 +86,16 @@ const routes: Routes = [
     ]
   },},
 
-  {path: 'settings', component: ListSettingsComponent,
+  {path: 'pricing', component: ListPricingComponent,
   data: {
-    title: 'settings',
+    title: 'pricing',
     breadcrumb: [
       {
         label: 'home',
         url: '/admin/dashboard'
       },
       {
-        label: 'settings',
+        label: 'pricing',
         url: ''
       }
     ]

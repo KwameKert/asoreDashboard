@@ -1,50 +1,6 @@
 <app-preloader *ngIf="isLoading; else elseBlock"></app-preloader>
 
 <ng-template #elseBlock>
-
-<!-- <div class="login-background ">
-
-    <div class="row  justify-content-center" >
-     
-      <div class="col-md-4 col-sm-12  mt-5">
-          <mat-card class="example-card">
-              <mat-card-header class="justify-content-center">
-                <mat-card-title class="text-center">Login</mat-card-title>
-              </mat-card-header>
-          
-              <mat-card-content>
-                
-                  <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
-  
-                      <mat-form-field appearance="outline" style="width:300px"  >
-                          <mat-label>Username</mat-label>
-                          <input matInput placeholder="kwamekert"  formControlName="username" >
-                          <mat-error *ngIf="loginForm.get('username').invalid"> Invalid input </mat-error>
-                        </mat-form-field>
-  
-                        <mat-form-field appearance="outline" style="width:300px"  >
-                          <mat-label>Password</mat-label>
-                          <input matInput placeholder="kwamekert"  formControlName="password" type="password" >
-                          <mat-error *ngIf="loginForm.get('password').invalid"> Invalid input </mat-error>
-                        </mat-form-field>
-                    <div align="center">
-                      <button type="submit" class="btn btn-primary btn-block btn-sm"  style="width:230px">Login</button>
-                    </div>
-                       
-                    </form>
-                  
-                
-              </mat-card-content>
-            
-            </mat-card>
-      </div>
-  
-  </div>  
-  
- 
-  
-  </div> -->
-
     <div class="login-background ">
   <div class="wrapper-page">
     <div class="card-box">

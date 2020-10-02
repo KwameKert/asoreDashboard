@@ -16,7 +16,7 @@ export interface Setting {
 @Injectable({
   providedIn: 'root'
 })
-export class SettingService extends CrudService<Setting>{
+export class PricingService extends CrudService<Setting>{
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
