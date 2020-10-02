@@ -7,6 +7,7 @@ import { ListAdminComponent } from 'src/app/modules/admins/components/list-admin
 import { ListCustomerComponent } from 'src/app/modules/customers/components/list-customer/list-customer.component';
 import { ListOrdersComponent } from 'src/app/modules/orders/component/list-orders/list-orders.component';
 import { ListRiderComponent } from 'src/app/modules/riders/components/list-rider/list-rider.component';
+import { ListSettingsComponent } from 'src/app/modules/settings/components/list-settings/list-settings.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -80,6 +81,21 @@ const routes: Routes = [
       },
       {
         label: 'riders',
+        url: ''
+      }
+    ]
+  },},
+
+  {path: 'settings', component: ListSettingsComponent,
+  data: {
+    title: 'settings',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'settings',
         url: ''
       }
     ]

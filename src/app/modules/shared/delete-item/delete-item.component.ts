@@ -22,6 +22,7 @@ export class DeleteItemComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, public _deleteService: DeleteService) { }
 
   ngOnInit(): void {
+    console.log(this.data)
   }
 
   checkWord(){

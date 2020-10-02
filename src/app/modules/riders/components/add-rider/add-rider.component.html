@@ -1,7 +1,7 @@
 
 <h1 mat-dialog-title>Add Rider</h1>
-<form [formGroup]="riderForm" (ngSubmit)="saveRider(riderForm.value)">
-<div mat-dialog-content class="container">
+<form [formGroup]="riderForm" (ngSubmit)="saveRider(riderForm.value, docFile.files[0])">
+<div mat-dialog-content  class="py-4">
    
     <div class="row justify-content-center">
         <div class="col-md-10 ">
@@ -64,8 +64,8 @@
                         <mat-label>Gender</mat-label>
                         <mat-select  formControlName="gender">
                             <mat-option>None</mat-option>
-                            <mat-option value="male" >Male</mat-option>
-                            <mat-option value="female" >Female</mat-option>
+                            <mat-option value="MALE" >Male</mat-option>
+                            <mat-option value="FEMALE" >Female</mat-option>
                           </mat-select>
                         <mat-error *ngIf="riderForm.get('gender').invalid"> Invalid input </mat-error>
                       </mat-form-field>
@@ -94,21 +94,29 @@
                     <div class="col-6">
                         <mat-form-field appearance="outline"  >
                           <mat-label>Vehicle</mat-label>
-                          <mat-select  formControlName="vehicle">
+                          <mat-select  formControlName="vehicle" >
                             <mat-option *ngFor="let vehicle  of vehicles" [value]="vehicle._id">
                                 {{vehicle.brand | titlecase}}-{{vehicle.model}} ({{vehicle.color}}) 
                               </mat-option>
                               <mat-option>None</mat-option>
                             </mat-select>
                         </mat-form-field>
+                    </div>
+                  </div>       
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="custom-file">
+                        <label class="custom-file-label"
+                          for="inputGroupFile01">Choose file </label>
+                          <input type="file" class="form-control" #docFile  #docFile>
                       </div>
-                  </div>           
+                    </div>
+                  </div>     
         </div>
     </div>
 </div>
 
 <div mat-dialog-actions class="float-right">
-
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-raised-button color="primary" class="float-right " type="submit"  [disabled]="!riderForm.valid"> <mat-icon>done</mat-icon> Save Rider</button>
         

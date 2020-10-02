@@ -49,7 +49,7 @@ export class ListRiderComponent implements OnInit {
   deleteRider(_id: Number){
     let data = {
       module: 'users',
-      data: {model: "rider", _id, word: "DELETE rider"}
+      data: {model: "rider", _id, word: "DELETe rider"}
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',
@@ -73,24 +73,25 @@ export class ListRiderComponent implements OnInit {
     });
   }
 
-  // editRider(Rider){
-  //   const dialogRef = this.dialog.open(EditRiderComponent, {
-  //     width: '820px',
-  //     height: '520px',
-  //     data: Rider
-  //   });
+  editRider(rider: any){
+    console.log(rider)
+    const dialogRef = this.dialog.open(AddRiderComponent, {
+      width: '820px',
+      height: '520px',
+      data: rider
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result.event){
-  //     //  this._toastr.success("Rider added successfully", "Success  😊", {  timeOut:2000});
-  //      this.loadRiders()
-  //     }
-  //   }, error=>{
-  //     // this._toastr.error("Oops an error. 🥺","",{
-  //     //   timeOut:2000
-  //     // })
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event){
+      //  this._toastr.success("Rider added successfully", "Success  😊", {  timeOut:2000});
+       this.loadRiders()
+      }
+    }, error=>{
+      // this._toastr.error("Oops an error. 🥺","",{
+      //   timeOut:2000
+      // })
+    });
+  }
 
  
   addRider(){

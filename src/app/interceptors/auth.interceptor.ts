@@ -57,8 +57,8 @@ import { ToastrService } from 'ngx-toastr';
                 if (isLogin) {
                   setTimeout(() => {
                     this._toastr.error("Session expired. Please login","Oops ");
-                    this._authService.logout()
-                    location.reload()
+                   // this._authService.logout()
+                    //location.reload()
                   }, 400);
                 } else {
                   this._toastr.error(err.error,"Oh Snap");
