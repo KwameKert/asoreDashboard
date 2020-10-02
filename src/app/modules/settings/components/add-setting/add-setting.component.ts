@@ -21,11 +21,11 @@ export class AddSettingComponent implements OnInit {
     if(this.data){
       this.loadEditForm(this.data)
     }else{
-      this.loadRiderForm();
+      this.loadFound();
     }
   }
 
-  loadRiderForm(){
+  loadFound(){
     this.settingForm = this._fb.group({
       amountPerMin: new FormControl('', Validators.required),
       amountPerMeter: new FormControl('', Validators.required),
@@ -38,12 +38,12 @@ export class AddSettingComponent implements OnInit {
   loadEditForm(data){
    
     this.settingForm = this._fb.group({
-    _id: data._id,  
-    amountPerMin: new FormControl('', Validators.required),
-      amountPerMeter: new FormControl('', Validators.required),
-      flatRate: new FormControl('', Validators.required),
-      status: new FormControl('', Validators.required),
-      description: '',
+      _id: data._id,  
+      amountPerMin: new FormControl(data.amountPerMin, Validators.required),
+      amountPerMeter: new FormControl(data.amountPerMeter, Validators.required),
+      flatRate: new FormControl(data.flatRate, Validators.required),
+      status: new FormControl(data.status, Validators.required),
+      description: data.description,
     
     });
 

@@ -13,7 +13,7 @@ import { ViewSettingComponent } from '../view-setting/view-setting.component';
 })
 export class ListSettingsComponent implements OnInit {
 
-  displayedColumns: Array<string> = ['minute', 'meter', 'flat', 'created_on', 'actions'];
+  displayedColumns: Array<string> = ['minute', 'meter', 'flat', 'created_on','status', 'actions'];
   isLoading: boolean = true;
   dataSource: any = null;
   isEmpty: boolean = false;
@@ -32,7 +32,7 @@ export class ListSettingsComponent implements OnInit {
   async loadSettings(){
     try{
       this.isLoading = true;
-      let settings = await this._settingService.fetchSettings();
+      let settings = await this._settingService.query({status: "live"});
         this.dataSource = settings.data;
         this.dataSource.paginator = this.paginator;
       
@@ -47,14 +47,14 @@ export class ListSettingsComponent implements OnInit {
 
 
   deleteSetting(_id: Number){
-    let data = {
-      module: 'users',
-      data: {model: "setting", _id, word: "DELETe setting"}
-    }
+    
+    let data = {model: "setting", _id, word: "DELETe setting"}
+    console.log(_id)
+    
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      width: '550px',
-      height: '180px',
-      data: data
+      width: '600px',
+      height: '280px',
+      data
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -76,7 +76,7 @@ export class ListSettingsComponent implements OnInit {
     console.log(setting)
     const dialogRef = this.dialog.open(AddSettingComponent, {
       width: '820px',
-      height: '520px',
+      height: '380px',
       data: setting
     });
 

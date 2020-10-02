@@ -48,8 +48,7 @@ export class ListRiderComponent implements OnInit {
 
   deleteRider(_id: Number){
     let data = {
-      module: 'users',
-      data: {model: "rider", _id, word: "DELETe rider"}
+    model: "rider", _id, word: "DELETe rider"
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',
