@@ -17,6 +17,11 @@ export class FleetManangerComponent implements OnInit {
     {name: "Riders", icon: "fa  fa-users", url: "/manager/riders"}
   ];
 
+  headerLinks: Array<object> = [
+    {name: 'Profile', icon: 'zmdi zmdi-account-circle', url: "/manager/profile"},
+    {name: 'Settings', icon: 'zmdi zmdi-account-circle', url: "/manager/settings"} 
+  ]
+
   breadcrumbConfig: object = {
     bgColor: '#eee',
     fontSize: '14px',
