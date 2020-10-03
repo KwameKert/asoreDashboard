@@ -8,6 +8,8 @@ import { ListCustomerComponent } from 'src/app/modules/customers/components/list
 import { ListOrdersComponent } from 'src/app/modules/orders/component/list-orders/list-orders.component';
 import { ListRiderComponent } from 'src/app/modules/riders/components/list-rider/list-rider.component';
 import { ListPricingComponent } from 'src/app/modules/pricing/components/list-pricing/list-pricing.component';
+import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
+import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -101,7 +103,34 @@ const routes: Routes = [
     ]
   },},
 
-
+  {path: 'profile', component: UpdateProfileComponent,
+  data: {
+    title: 'profile',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'profile',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'settings', component: ChangePasswordComponent,
+  data: {
+    title: 'setting',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'setting',
+        url: ''
+      }
+    ]
+  },}
 ]
 
 

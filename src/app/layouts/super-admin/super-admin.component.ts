@@ -26,10 +26,15 @@ export class SuperAdminComponent implements OnInit {
       {name: "Admins", url: "/admin/admins"}
     ]},
     {name: "Settings", icon: "fa fa-gears", links:  [
-      {name: "Toll", url: "/admin/pricing"},
+      {name: "Pricing", url: "/admin/pricing"},
       
     ]}
   ];
+
+  headerLinks: Array<object> = [
+    {name: 'Profile', icon: 'zmdi zmdi-account-circle', url: "/admin/profile"},
+    {name: 'Settings', icon: 'zmdi zmdi-account-circle', url: "/admin/settings"} 
+  ]
 
   breadcrumbConfig: object = {
     bgColor: '#eee',
