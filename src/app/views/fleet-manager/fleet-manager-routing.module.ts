@@ -5,6 +5,8 @@ import { FleetManagerComponent } from 'src/app/modules/dashboard';
 import { ListVehicleComponent } from 'src/app/modules/vehicles/components/list-vehicle/list-vehicle.component';
 import { RidersModule } from 'src/app/modules/riders/riders.module';
 import { FleetRidersComponent } from 'src/app/modules/riders/components/fleet-riders/fleet-riders.component';
+import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
+import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
 
 
 const routes: Routes = [
@@ -54,7 +56,35 @@ const routes: Routes = [
         }
       ]
     },
-  }
+  },
+  {path: 'profile', component: UpdateProfileComponent,
+  data: {
+    title: 'profile',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/manager/dashboard'
+      },
+      {
+        label: 'profile',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'settings', component: ChangePasswordComponent,
+  data: {
+    title: 'setting',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/manager/dashboard'
+      },
+      {
+        label: 'setting',
+        url: ''
+      }
+    ]
+  },}
   // {path: 'orders', component: ''},
   // {path: 'vehicle', component: ''},
   // {path: 'riders', component: ''},
