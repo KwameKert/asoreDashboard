@@ -14,4 +14,12 @@ export class ProfileService {
   public fetchProfile(){
     return this._httpClient.get<ApiResponse<any>>(`${this._baseUrl}/user/admin/profile`).toPromise();
   }
+
+  public updateProfile(data: any){ 
+    return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/admin/profile`, data).toPromise();
+  }
+
+  public changePassword(data: any){ 
+    return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/admin/changePassword`, data).toPromise();
+  }
 }
