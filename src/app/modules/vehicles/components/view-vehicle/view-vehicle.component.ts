@@ -13,7 +13,7 @@ export class ViewVehicleComponent implements OnInit {
    
 
   ngOnInit() {
-  
+    this.dialogRef.updatePosition({top: '150px'})
    //console.log(this.data);
   }
 

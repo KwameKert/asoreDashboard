@@ -24,6 +24,7 @@ export class AddAdminComponent implements OnInit {
       this.loadAddForm();
     }
   
+    this.dialogRef.updatePosition({top: '150px'})
   }
 
   loadAddForm(){

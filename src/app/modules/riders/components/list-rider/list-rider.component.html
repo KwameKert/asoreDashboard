@@ -6,9 +6,12 @@
             </div>
 
             <div class="card-body">
-                <div class="row" style="width:100%"  *ngIf="!isEmpty">
-        
-                    <div *ngIf="isLoading ; else elseBlock" >
+                <div class="row"   *ngIf="!isEmpty">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                  </mat-form-field>
+                    <div *ngIf="isLoading ; else elseBlock"  style="width:100%">
                       <ngx-skeleton-loader
                       count="5"
                       [theme]="{

@@ -22,6 +22,7 @@ export class AddManagerComponent implements OnInit {
 
       this.loadManagerForm();
     }
+    this.dialogRef.updatePosition({top: '150px'})
   }
 
   loadManagerForm(){
@@ -31,7 +32,8 @@ export class AddManagerComponent implements OnInit {
       username: '',
       role: 'FLEET MANAGER',
       company: '',
-      status: ''
+      status: '',
+      password: '123456'
     })
   }
 

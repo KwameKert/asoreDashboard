@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 import { RiderService } from '../../rider.service';
@@ -16,7 +17,7 @@ export class FleetRidersComponent implements OnInit {
 
   displayedColumns: Array<string> = ['full name', 'address', 'status', 'phone','created_on', 'actions'];
   isLoading: boolean = true;
-  dataSource: any = null;
+  dataSource: MatTableDataSource<any> = null;
   isEmpty: boolean = false;
   
   constructor(private _riderService: RiderService,  public dialog: MatDialog) { }
@@ -34,7 +35,7 @@ export class FleetRidersComponent implements OnInit {
     try{
       this.isLoading = true;
       let riders = await this._riderService.query({status: "live"});
-        this.dataSource = riders.data;
+        this.dataSource = new MatTableDataSource(riders.data);
         this.dataSource.paginator = this.paginator;
       
     }catch(error){
@@ -46,6 +47,14 @@ export class FleetRidersComponent implements OnInit {
   }
 
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   deleteRider(_id: Number){
     let data = {model: "rider", _id, word: "DELETe rider"}
@@ -97,7 +106,7 @@ export class FleetRidersComponent implements OnInit {
     
     const dialogRef = this.dialog.open(AddRiderComponent, {
       width: '820px',
-      height: '60%',
+      height: '70%',
       
     });
 

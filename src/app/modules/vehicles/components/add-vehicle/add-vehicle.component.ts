@@ -41,6 +41,7 @@ export class AddVehicleComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadVehicleForm();
+    this.dialogRef.updatePosition({top: '150px'})
   }
 
   loadVehicleForm(){

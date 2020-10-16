@@ -43,6 +43,7 @@ export class EditVehicleComponent implements OnInit {
   ngOnInit(): void {
     this.loadVehicleForm();
     this.editForm();
+    this.dialogRef.updatePosition({top: '150px'})
   }
 
   editForm(): void {

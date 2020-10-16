@@ -6,6 +6,7 @@ import { RiderService } from '../../rider.service';
 import { AddRiderComponent } from '../add-rider/add-rider.component';
 import { ViewRiderComponent } from '../view-rider/view-rider.component';
 
+import {MatTableDataSource} from '@angular/material/table';
 @Component({
   selector: 'app-list-rider',
   templateUrl: './list-rider.component.html',
@@ -15,7 +16,7 @@ export class ListRiderComponent implements OnInit {
 
   displayedColumns: Array<string> = ['full name', 'address', 'status', 'phone','created_on', 'actions'];
   isLoading: boolean = true;
-  dataSource: any = null;
+  dataSource: MatTableDataSource<any> = null;
   isEmpty: boolean = false;
   
   constructor(private _riderService: RiderService,  public dialog: MatDialog) { }
@@ -33,7 +34,7 @@ export class ListRiderComponent implements OnInit {
     try{
       this.isLoading = true;
       let riders = await this._riderService.query({status: "live"});
-        this.dataSource = riders.data;
+        this.dataSource = new MatTableDataSource(riders.data);
         this.dataSource.paginator = this.paginator;
       
     }catch(error){

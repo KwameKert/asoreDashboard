@@ -101,7 +101,7 @@ export class ListVehicleComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddVehicleComponent, {
       width: '820px',
-      height: '520px'
+      height: '70%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +120,7 @@ export class ListVehicleComponent implements OnInit {
   viewVehicle(vehicle){
     const dialogRef = this.dialog.open(ViewVehicleComponent, {
       width: '800px',
-      height: '420px',
+      height: '50%',
       data: vehicle
     });
 
