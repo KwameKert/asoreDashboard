@@ -6,129 +6,121 @@ import { VehicleService } from '../../vehicle.service';
 import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from '../edit-vehicle/edit-vehicle.component';
 import { ViewVehicleComponent } from '../view-vehicle/view-vehicle.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-vehicle',
   templateUrl: './list-vehicle.component.html',
-  styleUrls: ['./list-vehicle.component.scss']
+  styleUrls: ['./list-vehicle.component.scss'],
 })
 export class ListVehicleComponent implements OnInit {
-
-  displayedColumns: Array<string> = ['model', 'brand', 'status','mileage', 'created_on', 'actions'];
+  displayedColumns: Array<string> = [
+    'model',
+    'brand',
+    'status',
+    'mileage',
+    'created_on',
+    'actions',
+  ];
   isLoading: boolean = true;
-  dataSource: any = null;
-  
-  constructor( private _vehicleService: VehicleService,  public dialog: MatDialog,  ) { }
+  dataSource: MatTableDataSource<any> = null;
 
+  constructor(
+    private _vehicleService: VehicleService,
+    public dialog: MatDialog
+  ) {}
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.loadVehicles();
   }
 
-
- async loadVehicles(){
-
-    try{
+  async loadVehicles() {
+    try {
       this.isLoading = true;
-      let resObj = await this._vehicleService.query({status: "live"});
-      this.dataSource = resObj.data;
-      console.log(resObj.data)
+      let resObj = await this._vehicleService.query({ status: 'live' });
+      this.dataSource = new MatTableDataSource(resObj.data);
+     // console.log(resObj.data);
       this.dataSource.paginator = this.paginator;
       this.isLoading = false;
-
-    }catch(error){
-      console.error(error)
+    } catch (error) {
+      console.error(error);
     }
- 
-
-
-    // this._vehicleService.listVehicles().subscribe((data)=>{
-    //   if(data.data == null){
-    //     this._toastr.info("No vehicles found. 🥺","",{
-    //       timeOut:2000
-    //     })
-    //   }else{
-    //     this.dataSource = data.data;
-    //     this.dataSource.paginator = this.paginator;
-    //   }
-      
-    //   this.isLoading = false;
-    // }, error=>{
-
-    // })
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
-  deleteVehicle(_id: Number){
-   
+  deleteVehicle(_id: Number) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '600px',
       height: '270px',
-      data: {model: "vehicle", _id, word: "DELETE vehicle"}
+      data: { model: 'vehicle', _id, word: 'DELETE vehicle' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event) {
         this.loadVehicles();
-      }else{
-
+      } else {
       }
     });
   }
 
-  editVehicle(vehicle){
+  editVehicle(vehicle) {
     const dialogRef = this.dialog.open(EditVehicleComponent, {
       width: '820px',
       height: '520px',
-      data: vehicle
+      data: vehicle,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event){
-       this.loadVehicles()
-      }
-    }, error=>{
-    
-    });
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        if (result.event) {
+          this.loadVehicles();
+        }
+      },
+      (error) => {}
+    );
   }
 
- 
-  addVehicle(){
-
+  addVehicle() {
     const dialogRef = this.dialog.open(AddVehicleComponent, {
       width: '820px',
-      height: '70%'
+      height: '70%',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event){
-      //  this._toastr.success("Vehicle added successfully", "Success  😊", {  timeOut:2000});
-       this.loadVehicles()
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        if (result.event) {
+          //  this._toastr.success("Vehicle added successfully", "Success  😊", {  timeOut:2000});
+          this.loadVehicles();
+        }
+      },
+      (error) => {
+        // this._toastr.error("Oops an error. 🥺","",{
+        //   timeOut:2000
+        // })
       }
-    }, error=>{
-      // this._toastr.error("Oops an error. 🥺","",{
-      //   timeOut:2000
-     // })
-    });
-
+    );
   }
 
-  viewVehicle(vehicle){
+  viewVehicle(vehicle) {
     const dialogRef = this.dialog.open(ViewVehicleComponent, {
       width: '800px',
       height: '50%',
-      data: vehicle
+      data: vehicle,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-    }, error=>{
-     
-    });
-
+    dialogRef.afterClosed().subscribe(
+      (result) => {},
+      (error) => {}
+    );
   }
-
 }

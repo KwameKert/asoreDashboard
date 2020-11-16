@@ -14,7 +14,7 @@ export class ListCustomerComponent implements OnInit {
   isLoading: boolean = false; 
   isEmpty: boolean = false;
   dataSource: any ;
-  displayedColumns: any = ['username', 'email', 'address','status', 'actions']
+  displayedColumns: any = ['username', 'email', 'createdAt','status', 'actions']
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private _customerService: CustomersService,  public dialog: MatDialog) { }

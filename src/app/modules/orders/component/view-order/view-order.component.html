@@ -1,34 +1,159 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">Order Details</div>
+      <div class="card-body">
+        <div class="row" *ngIf="data != null">
+          <div class="col-md-7 col-xs-12">
+            <h4>Item Details</h4>
+            <div class="row">
+              <div class="col-6">
+                <p><b>Item : </b>{{ data.itemName }}</p>
+              </div>
+              <div class="col-6">
+                <p><b>Estimated Duration : </b>{{ data.duration }} min</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                  <p><b>Pickup Location : </b>{{data.pickUpLocationName}}  </p>
+              </div>
+              <div class="col-6">
+                  <p><b>Dropoff Location : </b>{{data.dropOffLocationName}}  </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p><b>Package Weight : </b>{{ data.packageWeight }} kg</p>
+              </div>
+              <div class="col-6">
+                <p><b>Package Category : </b>{{ data.packageCategory }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p><b>Contact One  Name : </b>{{ data.contactPersonOneName }}</p>
+              </div>
+              <div class="col-6">
+                <p><b>Contact One  Phone : </b>{{ data.contactPersonOnePhone }}</p>
+              </div>
+            </div>
 
-<h3 mat-dialog-title>View Order 
-    <span *ngIf="data.status == 'PENDING'" class="badge badge-danger"> {{data.status}} </span> 
-    <span *ngIf="data.status == 'PROCESSING'" class="badge badge-warning"> {{data.status}} </span> 
-    <span *ngIf="data.status == 'ENROUTE'" class="badge badge-info"> {{data.status}} </span> 
-    <span *ngIf="data.status == 'COMPLETED'" class="badge badge-success"> {{data.status}} </span> 
-</h3>
-<hr>
-<div mat-dialog-content class="container">
-    <div  class="row justify-content-center pt-4 ">
+            <div class="row">
+              <div class="col-6">
+                <p><b>Contact Two  Name : </b>{{ data.contactPersonTwoName }}</p>
+              </div>
+              <div class="col-6">
+                <p><b>Contact Two  Phone : </b>{{ data.contactPersonTwoPhone }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <b>Status : </b>
+                <span
+                  *ngIf="data.status == 'PENDING'"
+                  class="badge badge-danger"
+                >
+                  {{ data.status }}
+                </span>
+                <span
+                  *ngIf="data.status == 'PROCESSING'"
+                  class="badge badge-secondary"
+                >
+                  {{ data.status }}
+                </span>
+                <span
+                  *ngIf="data.status == 'ENROUTE'"
+                  class="badge badge-warning"
+                >
+                  {{ data.status }}
+                </span>
+                <span
+                  *ngIf="data.status == 'DELIVERED'"
+                  class="badge badge-info"
+                >
+                  {{ data.status }}
+                </span>
+                <span
+                  *ngIf="data.status == 'COMPLETED'"
+                  class="badge badge-success"
+                >
+                  {{ data.status }}
+                </span>
+              </div>
+              <div class="col-6">
+                <p><b>Created At: </b>{{ data.createdAt | date: "medium" }}</p>
+              </div>
+            </div>
+            <p>
+              <b>Item Details :</b>{{ data.itemDescription }} Note: {{ data.notes }}
+            </p>
+            <hr />
+            <h4>Customer Details</h4>
+            <div class="row">
+              <div class="col-6">
+                <p><b>Username :</b>{{ data.owner.username | titlecase }}</p>
+              </div>
+              <div class="col-6">
+                <p><b>Phone : </b> {{ data.owner.phone }}</p>
+              </div>
+            </div>
+            <p>
+              <b>Created At: </b>{{ data.owner.createdAt | date: "medium" }}
+            </p>
+          </div>
 
-        <div class="col-6 bg-light">
-            <p ><b>Username: </b>{{data.owner.username}}</p>
-            <p ><b>Phone: </b>{{data.owner.phone}}</p>
-            <p ><b>Email: </b>{{data.owner.email}}</p>
-            <p ><b>Gender: </b>{{data.owner.gender}}</p>
-           
+          <div class="col-md-5 col-xs-12">
+            <h4>Transaction</h4>
+            <div class="row mb-5">
+              <div class="col-6">
+                <p>
+                  <b>Estimated amount : </b>GH₵
+                  {{ data.orderFee | currency: " " }}
+                </p>
+              </div>
+              <div class="col-6">
+                <p>
+                  <!-- <b>Ride Endtime : </b> {{ data.transaction.rideEndTime }} -->
+                </p>
+              </div>
+            </div>
+
+            <h4>Riders Assigned</h4>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Time Picked</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ride of data.riderOrder" >
+                  <td >
+                    <img
+                      [src]="hostUrl + ride.rider.pictureUrl"
+                      class="avatar"
+                      alt=""
+                    />
+                  </td>
+                  <td >
+                    <a
+                      href="javascript:void(0)"
+                      (click)="viewRider(ride.rider)"
+                      >{{ ride.rider.firstName | titlecase }}
+                      {{ ride.rider.firstName | titlecase }}
+                    </a>
+                  </td>
+                  <td >
+                    {{ ride.rider.createdAt | date: "medium" }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-
-        <div class="col-6">
-            <p ><b>Item  :</b>{{data.item }}</p>
-            <p ><b>Item Details :</b>{{data.itemDetails }}</p>
-            <p ><b>Notes : </b>{{data.notes }}</p>
-            <p ><b>Created At: </b>{{data.createdAt | dateAgo}}</p>
-        </div>
- 
-    
+      </div>
     </div>
-    
-</div>
-<div mat-dialog-actions class="float-right">
-    <button mat-button mat-dialog-close class="float-right">Close</button>
-    
   </div>
+</div>

@@ -10,6 +10,7 @@ import { ListRiderComponent } from 'src/app/modules/riders/components/list-rider
 import { ListPricingComponent } from 'src/app/modules/pricing/components/list-pricing/list-pricing.component';
 import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
 import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
+import { ViewOrderComponent } from 'src/app/modules/orders/component/view-order/view-order.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -67,11 +68,30 @@ const routes: Routes = [
         url: '/admin/dashboard'
       },
       {
-        label: 'order',
+        label: 'orders',
         url: ''
       }
     ]
   },
+},
+{path: 'order/:id', component: ViewOrderComponent,
+data: {
+  title: 'order',
+  breadcrumb: [
+    {
+      label: 'home',
+      url: '/admin/dashboard'
+    },
+    {
+      label: 'orders',
+      url: '/admin/orders'
+    },
+    {
+      label: 'view order',
+      url: ''
+    }
+  ]
+},
 },
   {path: 'riders', component: ListRiderComponent,
   data: {

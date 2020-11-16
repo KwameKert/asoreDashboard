@@ -12,6 +12,6 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule
   ], 
-  exports: [ListOrdersComponent]
+  exports: [ListOrdersComponent, ViewOrderComponent]
 })
 export class OrdersModule { }

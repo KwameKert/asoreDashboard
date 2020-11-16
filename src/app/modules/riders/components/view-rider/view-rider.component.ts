@@ -10,6 +10,7 @@ export class ViewRiderComponent implements OnInit {
 
   age: any;
   
+  hostUrl: string = 'http://localhost:3000/'
   constructor(
     public dialogRef: MatDialogRef<ViewRiderComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -17,6 +18,8 @@ export class ViewRiderComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data.dob)
+
+    this.dialogRef.updatePosition({top: '150px'})
     let birthday = new Date(this.data.dob)
   this.age = this._calculateAge(birthday)
    //console.log(this.data);

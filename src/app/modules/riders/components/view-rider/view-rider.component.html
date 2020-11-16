@@ -10,21 +10,21 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-6">
+                    <img class="img-thumbnail" [src]="hostUrl + data.pictureUrl" alt="">
+               
+                </div>
+                <div class="col-6">
                     <p> <b>Full Name:   </b>{{data.firstName | titlecase}}  {{data.lastName | titlecase}}</p>
                     <p><b>Address:  </b> {{data.address | titlecase }}</p>
                     <p><b>Email:  </b>{{data.email }} </p>
                     <p><b>Phone: </b>{{data.phone }} </p>
                     <p><b>Gender: </b>{{data.gender }} </p>
 
+                    <p><b>Date of birth:  </b> {{data.dob | date:"mediumDate"}}</p>
+                    <p><b>Age:   </b>{{age }}</p>
+                    <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
+                    <p *ngIf="data.vehicle"> <b>Vehicle:  </b>{{ data.vehicle.brand | titlecase}} - {{ data.vehicle.model | titlecase}}</p>
                 </div>
-                <div class="col-6">
-
-            <p><b>Date of birth:  </b> {{data.dob | date:"mediumDate"}}</p>
-            <p><b>Age:   </b>{{age }}</p>
-            <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
-            <p *ngIf="data.vehicle"> <b>Vehicle:  </b>{{ data.vehicle.brand | titlecase}} - {{ data.vehicle.model | titlecase}}</p>
-            <p><b>Document:   </b>{{data.documentUrl}}</p>
-        </div>
             </div>
 
             <div class="row">
@@ -32,14 +32,14 @@
                     <p><b>Description: </b>{{data.description }}</p>
                 </div>
             </div>
-           
+
         </div>
- 
-    
+
+
     </div>
-    
+
 </div>
 <div mat-dialog-actions class="float-right">
     <button mat-button (click)="close()" class="float-right">Close</button>
-    
-  </div>
+
+</div>

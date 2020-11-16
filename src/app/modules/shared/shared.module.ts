@@ -13,10 +13,12 @@ import {MatListModule} from '@angular/material/list';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { ExcerptFilter } from './pipes/excerpts.pipe';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
+//import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 // import { AvatarModule } from 'ngx-avatar/lib/avatar.module';
 // import { ToastrModule } from 'ngx-toastr';
@@ -40,6 +42,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatListModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSortModule,
+  //  MatSortHeader,
     MatDialogModule,
     NgxSkeletonLoaderModule
     
@@ -66,6 +70,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatDialogModule,
     NgxSkeletonLoaderModule,
     MatMenuModule,
+    MatSortModule
+  //  MatSortHeader
   ],
   entryComponents: [DeleteItemComponent]
 })
