@@ -8,6 +8,7 @@ import { OrdersModule } from 'src/app/modules/orders/orders.module';
 import { RidersModule } from 'src/app/modules/riders/riders.module';
 import { PricingModule } from 'src/app/modules/pricing/pricing.module';
 import { ProfileModule } from 'src/app/modules/profile/profile.module';
+import { TicketModule } from 'src/app/modules/ticket/ticket.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProfileModule } from 'src/app/modules/profile/profile.module';
     OrdersModule,
     RidersModule,
     PricingModule,
-    ProfileModule
+    ProfileModule,
+    TicketModule
   ]
 })
 

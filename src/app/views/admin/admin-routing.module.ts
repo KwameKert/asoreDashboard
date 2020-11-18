@@ -11,6 +11,8 @@ import { ListPricingComponent } from 'src/app/modules/pricing/components/list-pr
 import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
 import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
 import { ViewOrderComponent } from 'src/app/modules/orders/component/view-order/view-order.component';
+import { ListTicketComponent } from 'src/app/modules/ticket/components/list-ticket/list-ticket.component';
+import { ViewTicketComponent } from 'src/app/modules/ticket/components/view-ticket/view-ticket.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -147,6 +149,38 @@ data: {
       },
       {
         label: 'setting',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'tickets', component: ListTicketComponent,
+  data: {
+    title: 'ticket',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'ticket',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'tickets/:id', component: ViewTicketComponent,
+  data: {
+    title: 'ticket',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'ticket',
+        url: 'admin/ticket'
+      },
+      {
+        label: 'view-ticket',
         url: ''
       }
     ]

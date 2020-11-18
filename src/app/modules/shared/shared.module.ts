@@ -17,6 +17,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 import { DeleteItemComponent } from './delete-item/delete-item.component';
 //import { MatSort, MatSortHeader } from '@angular/material/sort';
 
@@ -70,7 +71,7 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatDialogModule,
     NgxSkeletonLoaderModule,
     MatMenuModule,
-    MatSortModule
+    MatSortModule,
   //  MatSortHeader
   ],
   entryComponents: [DeleteItemComponent]

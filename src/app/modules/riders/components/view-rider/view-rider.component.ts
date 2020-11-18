@@ -10,7 +10,7 @@ export class ViewRiderComponent implements OnInit {
 
   age: any;
   
-  hostUrl: string = 'http://localhost:3000/'
+  hostUrl: string = 'http://api.thinksophtlabs:3000/'
   constructor(
     public dialogRef: MatDialogRef<ViewRiderComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
