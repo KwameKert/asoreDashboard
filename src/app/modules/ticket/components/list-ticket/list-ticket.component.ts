@@ -12,7 +12,7 @@ import { TicketService } from '../../ticket.service';
 })
 export class ListTicketComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'id', 'status','message','created_on', 'category', 'actions'];
+  displayedColumns: string[] = ['title', 'status','message','created_on', 'category', 'actions'];
   isLoading: boolean = false;
  dataSource: MatTableDataSource<any>;
 

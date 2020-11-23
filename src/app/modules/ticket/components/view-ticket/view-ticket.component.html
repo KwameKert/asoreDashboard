@@ -24,7 +24,7 @@
                     <div class="col-6">
                         <p><b>Category:</b> {{data.category}} </p>
                         <p><b>Message: </b>{{data.message}} </p>
-                        <p><b>Category:   </b> 
+                        <p><b>Status:   </b> 
                             <span *ngIf="data.status == 'resolved'" class="badge badge-success"> {{data.status}} </span> 
                             <span *ngIf="data.status == 'processing'" class="badge badge-info"> {{data.status}} </span> 
                             <span *ngIf="data.status == 'rejected'" class="badge badge-dark"> {{data.status}} </span> 
