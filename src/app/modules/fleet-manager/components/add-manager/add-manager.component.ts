@@ -30,8 +30,7 @@ export class AddManagerComponent implements OnInit {
       fullName: '',
       email: ['', Validators.email],
       username: '',
-      role: 'FLEET MANAGER',
-      company: '',
+      companyName: '',
       status: '',
       password: '123456'
     })
@@ -43,7 +42,7 @@ export class AddManagerComponent implements OnInit {
       fullName: this.data.fullName,
       email: [this.data.email, Validators.email],
       username: this.data.username,
-      company: this.data.company,
+      companyName: this.data.companyName,
       status: this.data.status
     })
   }

@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TicketService } from '../../ticket.service';
+import { UpdateTicketComponent } from '../update-ticket/update-ticket.component';
 
 @Component({
   selector: 'app-list-ticket',
@@ -18,7 +21,7 @@ export class ListTicketComponent implements OnInit {
 
  // dataSource: MatTableDataSource<any> = null;
   isEmpty: boolean = false;
-  constructor(private ticketService: TicketService, private _router: Router) { }
+  constructor(private ticketService: TicketService, private _router: Router, public dialog: MatDialog, private ngxService: NgxUiLoaderService,) { }
 
 
   ngOnInit(): void {
@@ -57,9 +60,41 @@ export class ListTicketComponent implements OnInit {
   }
 
 
-  updateTicket(data){
+   editTicket(_id: string){
+    const dialogRef = this.dialog.open(UpdateTicketComponent, {
+      width: '320px',
+      height: '220px',
+    });
 
+    dialogRef.afterClosed().subscribe( async result => {
+      if(result.status){
+        let data = {
+          _id: _id,
+          status: result.status
+        }
+
+        try{
+          this.ngxService.start();
+          let response =   await this.ticketService.updateTicketStatus(data);
+          if(response){
+            this.loadTickets();
+          }
+         
+      }catch(error){
+        this.isEmpty = true;
+      }finally{
+        this.ngxService.stop();
+      }
+        
+    }}, error=>{
+      // this._toastr.error("Oops an error. 🥺","",{
+      //   timeOut:2000
+      // })
+    });
   }
+
+
+
 
   viewTicket(id){
     this._router.navigate([`/admin/tickets/${id}`]);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-ticket',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateTicketComponent implements OnInit {
 
-  constructor() { }
+  status: string ='' ;
+  constructor(public dialogRef: MatDialogRef<UpdateTicketComponent>,) { }
 
   ngOnInit(): void {
+  }
+
+  updateTicket(){
+    if(this.status != ''){
+      this.dialogRef.close({status: this.status});
+    }
   }
 
 }

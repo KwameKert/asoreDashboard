@@ -35,5 +35,9 @@ export class FleetManagerService extends CrudService<FleetManager> {
       return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/manager/query?status=active`).toPromise()
   
   }
+
+  public listFleetManagers(){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/admin/listManagers`).toPromise()
+  }
  
 }

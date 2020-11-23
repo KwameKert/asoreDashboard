@@ -1,1 +1,14 @@
-<p>update-ticket works!</p>
+<h1 mat-dialog-title>Update Ticket</h1>
+<div mat-dialog-content class="container">
+    <div class="form-group">
+        <label for=""> Status</label>
+        <select name="" id="" class="form-control" [(ngModel)]="status">
+            <option value="processing">Processing</option>
+            <option value="resolved">Resolved</option>
+        </select>
+    </div>
+    </div>
+<div mat-dialog-actions class="float-right">
+        <button mat-raised-button mat-dialog-close color="">Cancel</button>
+        <button mat-raised-button color="primary" class="float-right " (click)="updateTicket()"> <mat-icon>done</mat-icon> Update Ticket</button>
+</div>
