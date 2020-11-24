@@ -6,17 +6,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TicketService } from '../../ticket.service';
-import { AssignTicketComponent } from '../assign-ticket/assign-ticket.component';
 import { UpdateTicketComponent } from '../update-ticket/update-ticket.component';
 
 @Component({
-  selector: 'app-list-ticket',
-  templateUrl: './list-ticket.component.html',
-  styleUrls: ['./list-ticket.component.scss']
+  selector: 'app-my-tickets',
+  templateUrl: './my-tickets.component.html',
+  styleUrls: ['./my-tickets.component.scss']
 })
-export class ListTicketComponent implements OnInit {
+export class MyTicketsComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'status','message','assigned_to','created_on', 'category', 'actions'];
+  displayedColumns: string[] = ['title', 'status','message','created_on', 'category', 'actions'];
   isLoading: boolean = false;
  dataSource: MatTableDataSource<any>;
 
@@ -34,7 +33,7 @@ export class ListTicketComponent implements OnInit {
   async loadTickets(){
     try{
       this.isLoading = true;
-      let riders = await this.ticketService.fetchAll();
+      let riders = await this.ticketService.fetchMyTickets();
         this.dataSource = new MatTableDataSource(riders.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -61,23 +60,7 @@ export class ListTicketComponent implements OnInit {
   }
 
 
-   assignTicket(_id: string){
-    const dialogRef = this.dialog.open(AssignTicketComponent, {
-      width: '450px',
-      height: '220px',
-      data: _id
-    });
 
-    dialogRef.afterClosed().subscribe( async result => {
-      if(result){
-        this.loadTickets();
-        
-    }}, error=>{
-      // this._toastr.error("Oops an error. 🥺","",{
-      //   timeOut:2000
-      // })
-    });
-  }
    editTicket(_id: string){
     const dialogRef = this.dialog.open(UpdateTicketComponent, {
       width: '320px',
@@ -120,6 +103,7 @@ export class ListTicketComponent implements OnInit {
   //  console.log(data)
   }
 
+
   async openTicket(_id: string){
     let data = {
       _id,
@@ -130,6 +114,5 @@ export class ListTicketComponent implements OnInit {
       console.log(response.data)
     }
   }
-
 
 }

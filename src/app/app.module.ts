@@ -12,6 +12,7 @@ import { AuthInterceptor } from './interceptors';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 import {NgDynamicBreadcrumbModule} from 'ng-dynamic-breadcrumb';
+import { SupportComponent } from './layouts/support/support.component';
 
 
 
@@ -25,6 +26,7 @@ import {NgDynamicBreadcrumbModule} from 'ng-dynamic-breadcrumb';
       SuperAdminComponent, 
       FleetManangerComponent,
        PageTitleComponent,
+       SupportComponent,
   ],
   imports: [
     BrowserModule,

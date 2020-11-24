@@ -17,4 +17,12 @@ export class TicketService  extends CrudService<any>{
   public updateTicketStatus(data: any){
     return this._httpClient.post<ApiResponse<any>>(`${this._url}/ticket/update`, data).toPromise()
   }
+  public assignTicket(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/ticket/assign`, data).toPromise()
+  }
+
+  public fetchMyTickets(){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/ticket/assigned`).toPromise()
+  }
+
 }

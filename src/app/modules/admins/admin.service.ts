@@ -25,7 +25,7 @@ export class AdminService extends CrudService<Admin> {
 
   fetchAllAdmin(){
     return  this._httpClient.get<
-      ApiResponse<Admin[]>>(`${this._url}/user/admin/list`).toPromise()
+      ApiResponse<Admin[]>>(`${this._url}/user/admin/listAdmins`).toPromise()
   }
 
   addAdmin(admin: Admin){

@@ -1,0 +1,28 @@
+<header id="topnav"> 
+    <app-header (titleChange)="changeTitle($event)" [role]="role" [profileLinks]="headerLinks"></app-header>
+    <app-sidebar [data]="links"  (titleChange)="changeTitle($event)"></app-sidebar>
+    </header>
+    
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-9 ">
+                   <app-page-title  [title]="pageTitle"></app-page-title> 
+                </div>
+                <div class="col-3 pt-2 text-right">
+                   <app-ng-dynamic-breadcrumb [bgColor]="breadcrumbConfig['bgColor']" [fontSize]="breadcrumbConfig['fontSize']" [fontColor]="breadcrumbConfig['fontColor']" [lastLinkColor]="breadcrumbConfig['lastLinkColor']" [symbol]="breadcrumbConfig['symbol']"></app-ng-dynamic-breadcrumb>   
+                </div>     
+           
+            </div>        
+            <div id="content">
+            
+            <router-outlet></router-outlet>
+            </div>
+    
+    
+    </div>
+    
+    
+    </div>
+    <app-footer ></app-footer> 
+    

@@ -30,7 +30,7 @@ export class ListAdminComponent implements OnInit {
 
     try{
       this.isLoading = true;
-      let resObject =  await this._adminService.query({role: "ADMIN", status:'active'});
+      let resObject =  await this._adminService.fetchAllAdmin();
       console.log(resObject)
       if(resObject){
         this.dataSource = resObject.data;

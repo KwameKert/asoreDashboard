@@ -39,6 +39,10 @@ ngOnInit() {
               this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});
               return this._router.navigate(['/admin/dashboard']);
               break;
+            case "SUPPORT":
+              this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});
+              return this._router.navigate(['/support/dashboard']);
+              break;
 
             case "FLEET MANAGER":
                 this._toastr.success("Login as FLEET MANAGER", "Success  😊", {  timeOut:2000});
