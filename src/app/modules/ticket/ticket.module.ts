@@ -16,7 +16,7 @@ import { MyTicketsComponent } from './components/my-tickets/my-tickets.component
     SharedModule
   ],
   exports:[
-    ListTicketComponent, ViewTicketComponent
+    ListTicketComponent, ViewTicketComponent, MyTicketsComponent
   ]
 })
 export class TicketModule { }

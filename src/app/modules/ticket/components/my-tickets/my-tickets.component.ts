@@ -25,6 +25,7 @@ export class MyTicketsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //console.log("view my tickets")
     this.loadTickets();
   }
 

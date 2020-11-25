@@ -1,45 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from 'src/app/modules/dashboard';
-import { MyTicketsComponent } from 'src/app/modules/ticket/components/my-tickets/my-tickets.component';
 import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
-
-
+import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
+import { ViewTicketComponent } from 'src/app/modules/ticket/components/view-ticket/view-ticket.component';
+import { MyTicketsComponent } from 'src/app/modules/ticket/components/my-tickets/my-tickets.component';
+import { ListTicketComponent } from 'src/app/modules/ticket/components/list-ticket/list-ticket.component';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: AdminComponent, 
-    data: {
-      title: 'dashboard',
-      breadcrumb: [
-        {
-          label: 'home',
-          url: '/support/dashboard'
-        }
-      ]
-    },
-  },
-  {
-    path: 'tickets', 
-    component: MyTicketsComponent,
-    data: {
-      title: 'tickets',
-      breadcrumb: [
-        {
-          label: 'home',
-          url: '/support/dashboard'
-        },
-        {
-          label: 'tickets',
-          url: ''
-        }
-      ]
-    },
-  },
+  {path: 'dashboard', component: AdminComponent},
+
   
+
   {path: 'profile', component: UpdateProfileComponent,
   data: {
     title: 'profile',
@@ -60,19 +33,46 @@ const routes: Routes = [
     breadcrumb: [
       {
         label: 'home',
-        url: '/manager/dashboard'
+        url: '/suuport/dashboard'
       },
       {
         label: 'setting',
         url: ''
       }
     ]
+  },},
+  {path: 'tickets', component: MyTicketsComponent,
+  data: {
+    title: 'ticket',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/admin/dashboard'
+      },
+      {
+        label: 'ticket',
+        url: ''
+      }
+    ]
+  },},
+  {path: 'tickets/:id', component: ViewTicketComponent,
+  data: {
+    title: 'ticket',
+    breadcrumb: [
+      {
+        label: 'home',
+        url: '/support/dashboard'
+      },
+      {
+        label: 'ticket',
+        url: 'support/tickets'
+      },
+      {
+        label: 'view-ticket',
+        url: ''
+      }
+    ]
   },}
-  // {path: 'orders', component: ''},
-  // {path: 'vehicle', component: ''},
-  // {path: 'riders', component: ''},
-
-
 ]
 
 
@@ -81,4 +81,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class SupportRoutingModule { }
-

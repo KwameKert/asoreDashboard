@@ -19,13 +19,13 @@ const routes: Routes = [
                        .then(m => m.AdminModule),
     canActivate: [AuthGuard]
   },
-  // {
-  //   path:'support', 
-  //   component: SupportComponent,
-  //   loadChildren: () => import('./views/support/support.module')
-  //                      .then(m => m.SupportModule),
-  //   canActivate: [AuthGuard]
-  // },
+  {
+    path:'support', 
+    component: SupportComponent,
+    loadChildren: () => import('./views/support/support.module')
+                       .then(m => m.SupportModule),
+    canActivate: [AuthGuard]
+  },
   {
     path:'manager', 
     component: FleetManangerComponent,
