@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   totalOrders: number;
   totalRiders: number;
   totalUsers: number;
+  totalUnresolvedTickets: number;
   
   dataSource: any;
   displayedColumns: any =['id', 'username', 'phone','email', 'createdAt'];
@@ -31,6 +32,7 @@ export class AdminComponent implements OnInit {
         this.totalOrders = results.totalOrders;
         this.totalRiders = results.totalRiders;
         this.totalUsers = results.totalUsers;
+        this.totalUnresolvedTickets = results.totalUnresolvedTickets
       }
 
     }catch(error){

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { CustomersService } from '../../customers.service';
 import { ViewCustomerComponent } from '../view-customer/view-customer.component';
 
@@ -13,7 +14,7 @@ export class ListCustomerComponent implements OnInit {
 
   isLoading: boolean = false; 
   isEmpty: boolean = false;
-  dataSource: any ;
+  dataSource: MatTableDataSource<any> = null;
   displayedColumns: any = ['username', 'email', 'createdAt','status', 'actions']
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -29,7 +30,7 @@ export class ListCustomerComponent implements OnInit {
         
         if(response && response.data.length !=0){
           let result = response.data;
-          this.dataSource = result
+          this.dataSource = new MatTableDataSource(result);
           //console.log(this.dataSource)
           this.dataSource.paginator = this.paginator;
           
