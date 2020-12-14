@@ -9,8 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ViewRiderComponent implements OnInit {
 
   age: any;
-  
-  hostUrl: string = 'http://api.thinksophtlabs:3000/'
+  hostUrl: string = 'http://api.thinksophtlabs.com:3000/'
   constructor(
     public dialogRef: MatDialogRef<ViewRiderComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }

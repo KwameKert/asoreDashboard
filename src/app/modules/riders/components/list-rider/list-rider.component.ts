@@ -5,9 +5,8 @@ import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-i
 import { RiderService } from '../../rider.service';
 import { AddRiderComponent } from '../add-rider/add-rider.component';
 import { ViewRiderComponent } from '../view-rider/view-rider.component';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-
 
 export interface UserData {
   id: string;
@@ -18,68 +17,86 @@ export interface UserData {
 
 /** Constants used to fill up our data base. */
 const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
+  'maroon',
+  'red',
+  'orange',
+  'yellow',
+  'olive',
+  'green',
+  'purple',
+  'fuchsia',
+  'lime',
+  'teal',
+  'aqua',
+  'blue',
+  'navy',
+  'black',
+  'gray',
 ];
 const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
+  'Maia',
+  'Asher',
+  'Olivia',
+  'Atticus',
+  'Amelia',
+  'Jack',
+  'Charlotte',
+  'Theodore',
+  'Isla',
+  'Oliver',
+  'Isabella',
+  'Jasper',
+  'Cora',
+  'Levi',
+  'Violet',
+  'Arthur',
+  'Mia',
+  'Thomas',
+  'Elizabeth',
 ];
 
 @Component({
   selector: 'app-list-rider',
   templateUrl: './list-rider.component.html',
-  styleUrls: ['./list-rider.component.scss']
+  styleUrls: ['./list-rider.component.scss'],
 })
 export class ListRiderComponent implements OnInit {
-
- //displayedColumns: Array<string> = ['id','full name', 'address', 'status', 'phone', 'stars',  'created_on', 'actions'];
-  displayedColumns: string[] = [ 'address', 'status','full name','created_on', 'stars', 'actions'];
+  displayedColumns: string[] = [
+    'address',
+    'status',
+    'full name',
+    'created_on',
+    'stars',
+    'verify',
+    'actions',
+  ];
   isLoading: boolean = false;
- dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any>;
 
- // dataSource: MatTableDataSource<any> = null;
   isEmpty: boolean = false;
-  
-  constructor(private _riderService: RiderService,  public dialog: MatDialog) { 
-   // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(users);
-  }
-
+  constructor(private _riderService: RiderService, public dialog: MatDialog) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
   ngOnInit(): void {
-   this.loadRiders();
+    this.loadRiders();
   }
 
-
-  async loadRiders(){
-    try{
+  async loadRiders() {
+    try {
       this.isLoading = true;
-      let riders = await this._riderService.query({status: "live"});
-        this.dataSource = new MatTableDataSource(riders.data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      
-    }catch(error){
+      let riders = await this._riderService.query({ status: 'live' });
+      this.dataSource = new MatTableDataSource(riders.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } catch (error) {
       this.isEmpty = true;
-    }finally{
+    } finally {
       this.isLoading = false;
     }
-  
   }
-
-
-  
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -90,93 +107,55 @@ export class ListRiderComponent implements OnInit {
     }
   }
 
-
-  deleteRider(_id: Number){
+  deleteRider(_id: Number) {
     let data = {
-    model: "rider", _id, word: "DELETe rider"
-    }
+      model: 'rider',
+      _id,
+      word: 'DELETe rider',
+    };
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',
       height: '180px',
-      data: data
+      data: data,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event) {
         this.loadRiders();
-    
-      }else{
-
+      } else {
       }
     });
   }
 
-  // editRider(rider: any){
-  //   console.log(rider)
-  //   const dialogRef = this.dialog.open(AddRiderComponent, {
-  //     width: '820px',
-  //     height: '520px',
-  //     data: rider
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result.event){
-  //     //  this._toastr.success("Rider added successfully", "Success  😊", {  timeOut:2000});
-  //      this.loadRiders()
-  //     }
-  //   }, error=>{
-  //     // this._toastr.error("Oops an error. 🥺","",{
-  //     //   timeOut:2000
-  //     // })
-  //   });
-  // }
-
- 
-  // addRider(){
-
-  //   const dialogRef = this.dialog.open(AddRiderComponent, {
-  //     width: '820px',
-  //     height: '520px'
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result.event){
-  //      // this._toastr.success("Rider added successfully", "Success  😊", {  timeOut:2000});
-  //      this.loadRiders()
-  //     }
-  //   }, error=>{
-  //     // this._toastr.error("Oops an error. 🥺","",{
-  //     //   timeOut:2000
-  //     // })
-  //   });
-
-  // }
-
-  viewRider(data: any){
+  viewRider(data: any) {
     const dialogRef = this.dialog.open(ViewRiderComponent, {
-      width: '800px',
-      height: '420px',
-      data
+      width: '950px',
+      height: '500px',
+      data,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-    }, error=>{
-      // this._toastr.error("Oops an error. 🥺","",{
-      //   timeOut:2000
-      // })
-    });
-
+    dialogRef.afterClosed().subscribe(
+      (result) => {},
+      (error) => {
+        // this._toastr.error("Oops an error. 🥺","",{
+        //   timeOut:2000
+        // })
+      }
+    );
   }
 }
 
 function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  const name =
+    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+    ' ' +
+    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+    '.';
 
   return {
     id: id.toString(),
     name: name,
     progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
+    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
   };
 }

@@ -34,7 +34,7 @@ export class FleetRidersComponent implements OnInit {
   async loadRiders(){
     try{
       this.isLoading = true;
-      let riders = await this._riderService.query({status: "live"});
+      let riders = await this._riderService.fetchManagerRiderList();
         this.dataSource = new MatTableDataSource(riders.data);
         this.dataSource.paginator = this.paginator;
       

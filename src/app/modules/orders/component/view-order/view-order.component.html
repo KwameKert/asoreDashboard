@@ -89,18 +89,21 @@
               <b>Item Details :</b>{{ data.itemDescription }} Note: {{ data.notes }}
             </p>
             <hr />
-            <h4>Customer Details</h4>
-            <div class="row">
-              <div class="col-6">
-                <p><b>Username :</b>{{ data.owner.username | titlecase }}</p>
+            <div *ngIf="data.owner">
+              <h4>Customer Details</h4>
+              <div class="row">
+                <div class="col-6">
+                  <p><b>Username :</b>{{ data.owner.username | titlecase }}</p>
+                </div>
+                <div class="col-6">
+                  <p><b>Phone : </b> {{ data.owner.phone }}</p>
+                </div>
               </div>
-              <div class="col-6">
-                <p><b>Phone : </b> {{ data.owner.phone }}</p>
-              </div>
+              <p>
+                <b>Created At: </b>{{ data.owner.createdAt | date: "medium" }}
+              </p>
             </div>
-            <p>
-              <b>Created At: </b>{{ data.owner.createdAt | date: "medium" }}
-            </p>
+            
           </div>
 
           <div class="col-md-5 col-xs-12">

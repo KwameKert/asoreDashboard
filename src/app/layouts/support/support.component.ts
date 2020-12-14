@@ -11,7 +11,7 @@ export class SupportComponent implements OnInit {
   pageTitle: string;
   role: string = "Support";
   links: Array<object> = [
-    {name: "Dashboard", icon: "md md-dashboard", url: "/admin/dashboard"},
+    {name: "Dashboard", icon: "md md-dashboard", url: "/support/dashboard"},
     {name: "Tickets", icon: " fa fa-ticket", url: "/support/tickets"},
   ];
 

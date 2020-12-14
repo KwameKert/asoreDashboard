@@ -53,6 +53,14 @@
                           {{element.stars}}
                          </td>
                       </ng-container>
+                      <ng-container matColumnDef="verify">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Verification </th>
+                        <td mat-cell *matCellDef="let element">
+                          <span [ngClass]="element.isVerified ? 'badge-success' : 'badge-danger'" class="badge">
+                            {{element.isVerified}}
+                          </span>
+                         </td>
+                      </ng-container>
 
                       <ng-container matColumnDef="created_on">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header > Created At </th>

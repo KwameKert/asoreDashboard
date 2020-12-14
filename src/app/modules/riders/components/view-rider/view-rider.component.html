@@ -14,16 +14,24 @@
                
                 </div>
                 <div class="col-6">
-                    <p> <b>Full Name:   </b>{{data.firstName | titlecase}}  {{data.lastName | titlecase}}</p>
-                    <p><b>Address:  </b> {{data.address | titlecase }}</p>
-                    <p><b>Email:  </b>{{data.email }} </p>
-                    <p><b>Phone: </b>{{data.phone }} </p>
-                    <p><b>Gender: </b>{{data.gender }} </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p> <b>Full Name:   </b>{{data.firstName | titlecase}}  {{data.lastName | titlecase}}</p>
+                            <p><b>Address:  </b> {{data.address | titlecase }}</p>
+                            <p><b>Email:  </b>{{data.email }} </p>
+                            <p><b>Phone: </b>{{data.phone }} </p>
+                            <p><b>Gender: </b>{{data.gender }} </p>
+                        </div>
+                        <div class="col-6">
+                            <p><b>Date of birth:  </b> {{data.dob | date:"mediumDate"}}</p>
+                            <p><b>Age:   </b>{{age }}</p>
+                            <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
+                            <p *ngIf="data.vehicle"> <b>Vehicle:  </b>{{ data.vehicle.brand | titlecase}} - {{ data.vehicle.model | titlecase}}</p>
+                        </div>
+                    </div>
+                    
 
-                    <p><b>Date of birth:  </b> {{data.dob | date:"mediumDate"}}</p>
-                    <p><b>Age:   </b>{{age }}</p>
-                    <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
-                    <p *ngIf="data.vehicle"> <b>Vehicle:  </b>{{ data.vehicle.brand | titlecase}} - {{ data.vehicle.model | titlecase}}</p>
+                   
                 </div>
             </div>
 

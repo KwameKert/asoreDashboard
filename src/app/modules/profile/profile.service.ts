@@ -14,12 +14,24 @@ export class ProfileService {
   public fetchProfile(){
     return this._httpClient.get<ApiResponse<any>>(`${this._baseUrl}/user/admin/profile`).toPromise();
   }
+  public fetchManagerProfile(){
+    return this._httpClient.get<ApiResponse<any>>(`${this._baseUrl}/user/manager/profile`).toPromise();
+  }
 
   public updateProfile(data: any){ 
     return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/admin/profile`, data).toPromise();
   }
 
+  public updateManagerProfile(data: any){ 
+    return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/manager/profile`, data).toPromise();
+  }
+
   public changePassword(data: any){ 
     return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/admin/changePassword`, data).toPromise();
   }
+  public changeManagerPassword(data: any){ 
+    return this._httpClient.patch<ApiResponse<any>>(`${this._baseUrl}/user/manager/changePassword`, data).toPromise();
+  }
+
+
 }

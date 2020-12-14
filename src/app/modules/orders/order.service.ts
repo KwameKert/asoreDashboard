@@ -34,6 +34,12 @@ export class OrderService  extends CrudService<Order>{
 
   }
 
+  public fetchManagerOrders(){
+
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/manager/orders`).toPromise();
+
+  }
+
   
 
 

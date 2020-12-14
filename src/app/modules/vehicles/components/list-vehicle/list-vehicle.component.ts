@@ -39,7 +39,7 @@ export class ListVehicleComponent implements OnInit {
   async loadVehicles() {
     try {
       this.isLoading = true;
-      let resObj = await this._vehicleService.query({ status: 'live' });
+      let resObj = await this._vehicleService.fetchVehicles('live');
       this.dataSource = new MatTableDataSource(resObj.data);
      // console.log(resObj.data);
       this.dataSource.paginator = this.paginator;

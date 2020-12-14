@@ -1,0 +1,48 @@
+<div class="row  justify-content-center" >
+    <div class="col-xs-12 col-md-6 col-lg-6 ">
+        <div class="card">
+            <div class="card-header">
+                Edit Profile
+            </div>
+            <div class="card-body">
+                <form [formGroup]="profileForm"   (ngSubmit)="saveProfile(profileForm.value)">
+                    <mat-form-field appearance="outline" style="width:100%"  >
+                        <mat-label>Full Name</mat-label>
+                        <input matInput placeholder="kwame test"  formControlName="fullName" >
+                        <mat-error *ngIf="profileForm.get('fullName').invalid"> Invalid input </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="width:100%"  >
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="kwamekert"  formControlName="username" >
+                        <mat-error *ngIf="profileForm.get('username').invalid"> Invalid input </mat-error>
+                      </mat-form-field>  
+
+                      <mat-form-field appearance="outline" style="width:100%"  >
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="0200000000"  formControlName="phone" >
+                        <mat-error *ngIf="profileForm.get('phone').invalid"> Invalid input </mat-error>
+                      </mat-form-field>   
+
+                      <mat-form-field appearance="outline" style="width:100%"  >
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="kwame@gmail.com"  formControlName="email" >
+                        <mat-error *ngIf="profileForm.get('email').invalid"> Invalid input </mat-error>
+                      </mat-form-field>   
+                     
+                      <mat-form-field appearance="outline" style="width:100%"  >
+                        <mat-label>Company</mat-label>
+                        <input matInput placeholder="thinksopht"  formControlName="companyName" >
+                        <mat-error *ngIf="profileForm.get('companyName').invalid"> Invalid input </mat-error>
+                      </mat-form-field>   
+                     
+                   
+                  
+                     <button type="submit" class="btn btn-primary btn-block" [disabled]="!profileForm.valid"><i class="fa  fa-pencil-square-o "></i> Update</button>
+                   </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

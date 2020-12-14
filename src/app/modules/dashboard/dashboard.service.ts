@@ -26,4 +26,10 @@ export class DashboardService {
     fetchComponents(){
      return this._httpClient.get<ApiResponse<any>>(`${this._baseUrl}/user/admin/dashboard`).toPromise();
     }
+
+    fetchManagerComponents(){
+     return this._httpClient.get<ApiResponse<any>>(`${this._baseUrl}/user/manager/dashboard`).toPromise();
+    }
+
+
 }
