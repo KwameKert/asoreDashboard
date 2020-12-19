@@ -6,11 +6,12 @@ import { ViewRiderComponent } from './components/view-rider/view-rider.component
 import { FleetRidersComponent } from './components/fleet-riders/fleet-riders.component';
 import { SharedModule } from '../shared/shared.module';
 import { EditRiderComponent } from './components/edit-rider/edit-rider.component';
+import { VerifyRiderComponent } from './components/verify-rider/verify-rider.component';
 
 
 
 @NgModule({
-  declarations: [AddRiderComponent, ListRiderComponent, ViewRiderComponent, FleetRidersComponent, EditRiderComponent],
+  declarations: [AddRiderComponent, ListRiderComponent, ViewRiderComponent, FleetRidersComponent, EditRiderComponent, VerifyRiderComponent],
   imports: [
     CommonModule,
     SharedModule

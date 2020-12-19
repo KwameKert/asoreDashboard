@@ -7,6 +7,7 @@ import { AddRiderComponent } from '../add-rider/add-rider.component';
 import { ViewRiderComponent } from '../view-rider/view-rider.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { VerifyRiderComponent } from '../verify-rider/verify-rider.component';
 
 export interface UserData {
   id: string;
@@ -143,19 +144,39 @@ export class ListRiderComponent implements OnInit {
       }
     );
   }
+
+  verifyRider(_id: String){
+    let data = {
+      _id,
+      word: 'Verify rider',
+    };
+    const dialogRef = this.dialog.open(VerifyRiderComponent, {
+      width: '600px',
+      height: '300px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event) {
+        this.loadRiders();
+      } else {
+      }
+    });
+  }
 }
 
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-  };
-}
+
+// function createNewUser(id: number): UserData {
+//   const name =
+//     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+//     ' ' +
+//     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+//     '.';
+//   return {
+//     id: id.toString(),
+//     name: name,
+//     progress: Math.round(Math.random() * 100).toString(),
+//     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
+//   };
+// }

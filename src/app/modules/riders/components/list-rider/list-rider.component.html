@@ -89,6 +89,18 @@
                               <mat-icon>clear</mat-icon>
                               <span>Delete Rider</span>
                             </button>
+                            <button mat-menu-item (click)="verifyRider(element._id)">
+                              <div *ngIf="element.isVerified; else elseBlock">
+                                <mat-icon>report</mat-icon>
+                                <span>Unverify Rider</span>
+                              </div>
+                              <ng-template
+                               #elseBlock>
+                               <mat-icon>how_to_reg</mat-icon>
+                               <span>Verify Rider</span>
+                              </ng-template>
+                              
+                            </button>
                           </mat-menu>
                         </td>
                       </ng-container>

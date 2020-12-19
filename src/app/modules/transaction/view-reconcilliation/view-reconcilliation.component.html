@@ -1,0 +1,51 @@
+
+<h1 mat-dialog-title class="text-center">View Reconcilliation</h1>
+<hr>
+<div mat-dialog-content class="container">
+ <div class="row">
+     <div class="col-9">
+        <div class="row">
+            <div class="col-6">
+              <p><b>Item : </b>{{ data.order.itemName }}</p>
+            </div>
+            <div class="col-6">
+              <p><b>Estimated Duration : </b>{{ data.order.duration }} min</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+                <p><b>Pickup Location : </b>{{data.order.pickUpLocationName}}  </p>
+            </div>
+            <div class="col-6">
+                <p><b>Dropoff Location : </b>{{data.order.dropOffLocationName}}  </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p><b>Package Weight : </b>{{ data.order.packageWeight }} kg</p>
+            </div>
+            <div class="col-6">
+              <p><b>Package Category : </b>{{ data.order.packageCategory }}</p>
+            </div>
+          </div>
+
+     </div>
+     <div class="col-3" >
+       <div>
+           <p><b>Rider Name : </b>{{data.rider.firstName | titlecase}} {{data.rider.lastName | titlecase }}</p>
+           <p><b>Rider Addres: </b>{{data.rider.address | titlecase}}</p>
+       </div>
+       <hr>
+       <div>
+           <p><b>Amount: {{data.amount | currency:' '}} </b></p>
+           <p><b>Status: </b>{{data.status}}</p>
+       </div>
+     </div>
+ </div>
+
+    
+</div>
+<div mat-dialog-actions class="float-right">
+    <button mat-button (click)="close()" class="float-right">Close</button>
+    
+  </div>

@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-lg-12 col-xl-12">
+    <div class="card">
+      <div class="card-header">Reconcilliation List</div>
+
+      <div class="card-body">
+        <div class="row" *ngIf="!isEmpty">
+          <mat-form-field appearance="outline">
+            <mat-label>Filter</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Ex. Mia"
+              #input
+            />
+          </mat-form-field>
+          <div *ngIf="isLoading; else elseBlock" style="width: 100%">
+            <ngx-skeleton-loader
+              count="5"
+              [theme]="{
+                width: '90%',
+                'border-radius': '0',
+                height: '15px',
+                'margin-bottom': '10px'
+              }"
+            ></ngx-skeleton-loader>
+          </div>
+
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="fullname">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Full Name
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.rider.firstName | titlecase }}
+                {{ element.rider.lastName | titlecase }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.amount }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <span
+                  *ngIf="element.status == 'PENDING'"
+                  class="badge badge-success"
+                >
+                  {{ element.status }}
+                </span>
+                <span
+                  *ngIf="element.status == 'inactive'"
+                  class="badge badge-warning"
+                >
+                  {{ element.status }}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="created_on">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Created At
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.createdAt | dateAgo }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-button
+                  [matMenuTriggerFor]="belowMenu"
+                  aria-label="Example icon-button with a menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #belowMenu="matMenu" yPosition="below">
+                  <button mat-menu-item (click)="viewReconcilliation(element)">
+                    <mat-icon>visibility</mat-icon>
+                    <span>View Reconcilliation </span>
+                  </button>
+                  <button mat-menu-item (click)="reconcileAmount(element._id)">
+                    <mat-icon>cached</mat-icon>
+                    <span>Reconcile Amount </span>
+                  </button>
+                </mat-menu>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">
+                No data matching the filter "{{ input.value }}"
+              </td>
+            </tr>
+          </table>
+
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            class="float-right"
+          ></mat-paginator>
+        </div>
+
+        <div class="row justify-content-center text-center" style="width: 100%">
+          <div class="col-9">
+            <div class="alert alert-info" *ngIf="isEmpty">
+              No reconciliations found.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

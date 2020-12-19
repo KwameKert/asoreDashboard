@@ -9,6 +9,7 @@ import { RidersModule } from 'src/app/modules/riders/riders.module';
 import { PricingModule } from 'src/app/modules/pricing/pricing.module';
 import { ProfileModule } from 'src/app/modules/profile/profile.module';
 import { TicketModule } from 'src/app/modules/ticket/ticket.module';
+import { TransactionModule } from 'src/app/modules/transaction/transaction.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TicketModule } from 'src/app/modules/ticket/ticket.module';
     RidersModule,
     PricingModule,
     ProfileModule,
-    TicketModule
+    TicketModule,
+    TransactionModule
   ]
 })
 

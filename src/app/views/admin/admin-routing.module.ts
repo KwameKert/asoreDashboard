@@ -13,6 +13,7 @@ import { ChangePasswordComponent } from 'src/app/modules/profile/components/chan
 import { ViewOrderComponent } from 'src/app/modules/orders/component/view-order/view-order.component';
 import { ListTicketComponent } from 'src/app/modules/ticket/components/list-ticket/list-ticket.component';
 import { ViewTicketComponent } from 'src/app/modules/ticket/components/view-ticket/view-ticket.component';
+import { FetchReconcilliationsComponent } from 'src/app/modules/transaction/fetch-reconcilliations/fetch-reconcilliations.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: AdminComponent},
@@ -28,6 +29,23 @@ const routes: Routes = [
         },
         {
           label: 'fleet manager',
+          url: ''
+        }
+      ]
+    },
+    },
+  {
+    path: 'reconcilliation',
+    component: FetchReconcilliationsComponent,
+    data: {
+      title: 'transactions',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/admin/dashboard'
+        },
+        {
+          label: 'reconcilliation',
           url: ''
         }
       ]

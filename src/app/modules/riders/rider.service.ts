@@ -30,12 +30,12 @@ export class RiderService extends CrudService<Rider>{
   }
 
   
-
-
   public fetchManagerRiderList(){
-
     return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/manager/riderList`).toPromise();
+  }
 
+  public verifyRider(data){
+    return this._httpClient.patch<ApiResponse<any>>(`${this._url}/rider/verify`, data).toPromise();
   }
 
 }

@@ -1,24 +1,20 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CrudService } from '../service';
-import { DeleteService } from '../service/delete.service';
+import { RiderService } from '../../rider.service';
 
-
-export interface Empty {
-    _id: string
-}
 @Component({
-  selector: 'app-delete-item',
-  templateUrl: './delete-item.component.html',
-  styleUrls: ['./delete-item.component.scss']
+  selector: 'app-verify-rider',
+  templateUrl: './verify-rider.component.html',
+  styleUrls: ['./verify-rider.component.scss']
 })
-export class DeleteItemComponent implements OnInit {
+export class VerifyRiderComponent implements OnInit {
 
+ 
   keyWord: string;
   isValid: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DeleteItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public _deleteService: DeleteService) { }
+  constructor(public dialogRef: MatDialogRef<VerifyRiderComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, public _riderService: RiderService) { }
 
   ngOnInit(): void {
     console.log(this.data)
@@ -29,12 +25,14 @@ export class DeleteItemComponent implements OnInit {
       this.keyWord == this.data.word ? this.isValid = true : this.isValid = false;
   }
 
-  async delete(){
+  async verify(){
 
     try{
-      let {_id, model} = this.data;
-      console.log(this.data)
-      let resObj = await this._deleteService.delete(_id, model);
+      let data = {
+        _id: this.data._id
+      }
+      console.log(data)
+      let resObj = await this._riderService.verifyRider(data);
       if(resObj){
         let evt = {
           data: resObj.data,
