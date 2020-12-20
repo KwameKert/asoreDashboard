@@ -1,0 +1,21 @@
+
+<h3 mat-dialog-title class="text-center">Reconcile Payment</h3>
+<hr>
+<div mat-dialog-content >
+    <div  class="row ">
+
+        <div class="col-md-12">
+           <p >This decision is irreversible. Do you want reconcile payment of  <b>GH₵ {{data.amount}} </b>?
+           </p>
+      
+        </div>
+ 
+    
+    </div>
+    
+</div>
+<div mat-dialog-actions class="float-right">
+    <button class="btn btn-secondary" (click)="close()"  class="float-right">Cancel</button>
+    <button class="btn btn-primary" (click)="pay()"  class="float-right">Pay</button>
+    
+  </div>

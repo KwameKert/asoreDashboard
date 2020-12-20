@@ -63,9 +63,9 @@ const NAMES: string[] = [
 })
 export class ListRiderComponent implements OnInit {
   displayedColumns: string[] = [
+    'full name',
     'address',
     'status',
-    'full name',
     'created_on',
     'stars',
     'verify',

@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -38,7 +39,9 @@ export class FetchReconcilliationsComponent implements OnInit {
     try {
       this.isLoading = true;
       let transactions = await this._transactionService.fetchReconcilliations();
-      this.dataSource = new MatTableDataSource(transactions.data);
+      let formatData = this.formatData(transactions.data);
+      console.log(formatData)
+      this.dataSource = new MatTableDataSource(formatData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     } catch (error) {
@@ -49,7 +52,9 @@ export class FetchReconcilliationsComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
+   
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue.trim().toLowerCase())
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
@@ -67,14 +72,72 @@ export class FetchReconcilliationsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (result) => {},
       (error) => {
-        // this._toastr.error("Oops an error. 🥺","",{
-        //   timeOut:2000
-        // })
+
       }
     );
   }
 
-  reconcileAmount(id: String){
+  formatData(data){
+    let reconcilliationsList = [];
+    data.forEach((item)=>{
+      let recon = {
+        _id: item._id,
+        fullName: item.rider.firstName +" "+item.rider.lastName,
+        status: item.status, 
+        amount: item.amount, 
+        createdAt: item.createdAt
+      }
+      reconcilliationsList.push(recon);
+    })
+    return reconcilliationsList;
+  }
+
+  reconcileAmount(data: any){
+    console.log("Im here", data)
+    const dialogRef = this.dialog.open(ReconcilePayment, {
+      width: '450px',
+      height: '250px',
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        this.loadReconcilliations();
+
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+}
+
+
+
+@Component({
+  selector: 'reconcile-payment',
+  templateUrl: 'reconcile-payment.html',
+})
+export class ReconcilePayment {
+
+  constructor(
+    private _transactionService: TransactionService,
+    public dialogRef: MatDialogRef<ReconcilePayment>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  async  pay(){
+    let data ={
+      id: this.data._id   
+    }
+    let response  = await this._transactionService.reconcilePayment(data);
+    if(response){
+      this.dialogRef.close();
+    }
 
   }
 

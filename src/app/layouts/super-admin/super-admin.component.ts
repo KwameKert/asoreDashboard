@@ -27,8 +27,7 @@ export class SuperAdminComponent implements OnInit {
       {name: "Admins", url: "/admin/admins"}
     ]},
     {name: "Transactions", icon: "fa fa-credit-card-alt", links: [
-      {name: "Reconcilliation", url: "/admin/reconcilliation"},
-      {name: "Admins", url: "/admin/admins"}
+      {name: "Reconcilliation", url: "/admin/reconcilliation"}
     ]},
     {name: "Settings", icon: "fa fa-gears", links:  [
       {name: "Pricing", url: "/admin/pricing"},
