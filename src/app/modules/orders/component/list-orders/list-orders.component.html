@@ -48,7 +48,7 @@
               <td mat-cell *matCellDef="let element">
                 <span
                   *ngIf="element.status == 'PENDING'"
-                  class="badge badge-dark"
+                  class="badge badge-light"
                 >
                   {{ element.status }}
                 </span>
@@ -59,7 +59,7 @@
                   {{ element.status }}
                 </span>
                 <span
-                  *ngIf="element.status == 'NO RIDE'"
+                  *ngIf="element.status == 'NO_RIDER'"
                   class="badge badge-danger"
                 >
                   {{ element.status }}
@@ -87,6 +87,12 @@
                 <span
                   *ngIf="element.status == 'COMPLETED'"
                   class="badge badge-success"
+                >
+                  {{ element.status }}
+                </span>
+                <span
+                  *ngIf="element.status == 'CANCEL'"
+                  class="badge badge-dark"
                 >
                   {{ element.status }}
                 </span>

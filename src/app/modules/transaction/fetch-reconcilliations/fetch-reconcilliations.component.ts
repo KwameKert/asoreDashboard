@@ -21,6 +21,7 @@ export class FetchReconcilliationsComponent implements OnInit {
     'created_on',
     'actions'
   ];
+  originalTransaction = [];
   isLoading: boolean = false;
   dataSource: MatTableDataSource<any>;
 
@@ -39,6 +40,7 @@ export class FetchReconcilliationsComponent implements OnInit {
     try {
       this.isLoading = true;
       let transactions = await this._transactionService.fetchReconcilliations();
+      this.originalTransaction = transactions.data;
       let formatData = this.formatData(transactions.data);
       console.log(formatData)
       this.dataSource = new MatTableDataSource(formatData);
@@ -63,10 +65,12 @@ export class FetchReconcilliationsComponent implements OnInit {
   }
 
   viewReconcilliation(data){
+    let obj = this.originalTransaction.find(o => o._id === data._id);
+    console.log("data sending data", obj)
     const dialogRef = this.dialog.open(ViewReconcilliationComponent, {
       width: '950px',
       height: '350px',
-      data,
+      data: obj,
     });
 
     dialogRef.afterClosed().subscribe(

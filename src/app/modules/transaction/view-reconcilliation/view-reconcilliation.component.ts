@@ -12,6 +12,7 @@ export class ViewReconcilliationComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   ngOnInit(): void {
+    console.log("this is the data",this.data)
   }
 
    close(){
