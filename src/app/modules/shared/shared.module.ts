@@ -17,13 +17,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-
 import { DeleteItemComponent } from './delete-item/delete-item.component';
-//import { MatSort, MatSortHeader } from '@angular/material/sort';
-
-// import { AvatarModule } from 'ngx-avatar/lib/avatar.module';
-// import { ToastrModule } from 'ngx-toastr';
-// import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader/lib/ngx-skeleton-loader.module';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 
@@ -44,15 +39,9 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-  //  MatSortHeader,
     MatDialogModule,
-    NgxSkeletonLoaderModule
-    
-  //   NgxSkeletonLoaderModule,
-  //   ToastrModule.forRoot({
-  //     positionClass: 'toast-top-right',
-  //     preventDuplicates: true,
-  // }), 
+    NgxSkeletonLoaderModule,
+    HighchartsChartModule
   ],
   exports: [
     FormsModule,
@@ -72,6 +61,7 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     NgxSkeletonLoaderModule,
     MatMenuModule,
     MatSortModule,
+    HighchartsChartModule
   //  MatSortHeader
   ],
   entryComponents: [DeleteItemComponent]

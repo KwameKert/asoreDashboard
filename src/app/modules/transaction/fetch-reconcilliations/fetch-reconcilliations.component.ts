@@ -24,6 +24,7 @@ export class FetchReconcilliationsComponent implements OnInit {
   originalTransaction = [];
   isLoading: boolean = false;
   dataSource: MatTableDataSource<any>;
+ 
 
   isEmpty: boolean = false;
 

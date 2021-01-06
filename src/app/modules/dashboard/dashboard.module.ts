@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
-//import { ChartsModule } from 'ng2-charts';
-import { SharedModule} from '../../../../../../angular-apps/thinkSoftAdmin/src/app/modules/shared/shared.module';
 import { FleetManagerComponent } from './components/fleet-manager/fleet-manager.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
   declarations: [AdminComponent, FleetManagerComponent],
   imports: [
-    SharedModule,
     CommonModule,
-   /// ChartsModule,
+    SharedModule,
   
   ],
   exports: [AdminComponent, FleetManagerComponent]

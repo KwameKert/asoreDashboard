@@ -10,6 +10,7 @@ import { PricingModule } from 'src/app/modules/pricing/pricing.module';
 import { ProfileModule } from 'src/app/modules/profile/profile.module';
 import { TicketModule } from 'src/app/modules/ticket/ticket.module';
 import { TransactionModule } from 'src/app/modules/transaction/transaction.module';
+import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { TransactionModule } from 'src/app/modules/transaction/transaction.modul
     CustomersModule,
     OrdersModule,
     RidersModule,
+    DashboardModule,
     PricingModule,
     ProfileModule,
     TicketModule,

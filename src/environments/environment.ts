@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  //api_host : "http://localhost:3000/api"
+   api_host : "http://localhost:3000/api"
   //api_host : "http://api.thinksophtlabs.com:3000/api"
-  api_host : "https://safehandsapp.co/api"
+  //api_host : "https://safehandsapp.co/api"
 };
 /*
  * For easier debugging in development mode, you can import the following file
