@@ -3,17 +3,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RiderService } from '../../rider.service';
 
 @Component({
-  selector: 'app-verify-rider',
-  templateUrl: './verify-rider.component.html',
-  styleUrls: ['./verify-rider.component.scss']
+  selector: 'app-update-rider-status',
+  templateUrl: './update-rider-status.component.html',
+  styleUrls: ['./update-rider-status.component.scss']
 })
-export class VerifyRiderComponent implements OnInit {
+export class UpdateRiderStatusComponent implements OnInit {
 
  
   keyWord: string;
   isValid: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<VerifyRiderComponent>,
+  constructor(public dialogRef: MatDialogRef<UpdateRiderStatusComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, public _riderService: RiderService) { }
 
   ngOnInit(): void {
@@ -25,14 +25,14 @@ export class VerifyRiderComponent implements OnInit {
       this.keyWord == this.data.word ? this.isValid = true : this.isValid = false;
   }
 
-  async verify(){
+  async update(){
 
     try{
       let data = {
         _id: this.data._id
       }
       console.log(data)
-      let resObj = await this._riderService.verifyRider(data);
+      let resObj = await this._riderService.updateRiderStatus(this.data._id);
       if(resObj){
         let evt = {
           data: resObj.data,

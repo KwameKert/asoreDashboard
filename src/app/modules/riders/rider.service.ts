@@ -38,4 +38,8 @@ export class RiderService extends CrudService<Rider>{
     return this._httpClient.patch<ApiResponse<any>>(`${this._url}/rider/verify`, data).toPromise();
   }
 
+  public updateRiderStatus(_id: String){
+    return this._httpClient.patch<ApiResponse<any>>(`${this._url}/rider/status/${_id}`, {}).toPromise();
+  }
+
 }

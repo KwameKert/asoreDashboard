@@ -21,6 +21,8 @@ export class FetchReconcilliationsComponent implements OnInit {
     'created_on',
     'actions'
   ];
+  startDate: any = null;
+  endDate: any = null;
   originalTransaction = [];
   isLoading: boolean = false;
   dataSource: MatTableDataSource<any>;
@@ -114,6 +116,25 @@ export class FetchReconcilliationsComponent implements OnInit {
 
       }
     );
+  }
+
+
+  async searchRange(){
+    if(this.startDate){
+        try{
+          let startDate = typeof(this.startDate) == 'string' ? this.startDate : new Date(2012, 7, 14);
+          let endDate = typeof(this.endDate) == 'string' ? this.endDate : Date.now();
+          let transactions = await this._transactionService.filterByRange(startDate, endDate);
+          this.originalTransaction = transactions.data;
+          let formatData = this.formatData(transactions.data);
+          console.log(formatData)
+          this.dataSource = new MatTableDataSource(formatData);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }catch(e){
+
+        }
+    }
   }
 
 }

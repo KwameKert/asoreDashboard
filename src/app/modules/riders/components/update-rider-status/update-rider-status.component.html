@@ -1,5 +1,5 @@
 
-<h1 mat-dialog-title class="text-center" > {{data.isVerified? 'Unverify': 'Verify'}}  Rider</h1>
+<h3 mat-dialog-title class="text-center"> Rider</h3>
 <hr>
 <div mat-dialog-content class="container">
     <div  class="row justify-content-center">
@@ -21,6 +21,6 @@
 </div>
 <div mat-dialog-actions class="float-right">
     <button mat-button (click)="close()" class="float-right">Cancel</button>
-    <button mat-button (click)="verify()" class="float-right" [disabled]="!isValid">Update</button>
+    <button mat-button (click)="update()" class="float-right" [disabled]="!isValid">Update</button>
     
   </div>

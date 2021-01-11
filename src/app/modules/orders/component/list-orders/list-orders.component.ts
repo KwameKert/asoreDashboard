@@ -42,6 +42,7 @@ export class ListOrdersComponent implements OnInit {
       let response = await this._orderService.fetchAll();
       if(response && response.data.length != 0){
         let result = response.data;
+        console.log(result)
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
 
@@ -59,19 +60,6 @@ export class ListOrdersComponent implements OnInit {
     console.log(_id);
     this.router.navigate(['/admin/order/',_id]);
 
-    // const dialogRef = this.dialog.open(ViewOrderComponent, {
-    //   width: '800px',
-    //   height: '400px',
-    //   data
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-      
-    // }, error=>{
-    //   // this._toastr.error("Oops an error. 🥺","",{
-    //   //   timeOut:2000
-    //   // })
-    // });
   }
 
   deleteOrder(id: string){

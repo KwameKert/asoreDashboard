@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 import { RiderService } from '../../rider.service';
@@ -8,6 +8,7 @@ import { ViewRiderComponent } from '../view-rider/view-rider.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { VerifyRiderComponent } from '../verify-rider/verify-rider.component';
+import { UpdateRiderStatusComponent } from '../update-rider-status/update-rider-status.component';
 
 export interface UserData {
   id: string;
@@ -145,12 +146,32 @@ export class ListRiderComponent implements OnInit {
     );
   }
 
-  verifyRider(_id: String){
+  verifyRider(_id: String, isVerified: boolean){
     let data = {
       _id,
-      word: 'Verify rider',
+      isVerified,
+      word: 'rider verficatioN',
     };
     const dialogRef = this.dialog.open(VerifyRiderComponent, {
+      width: '600px',
+      height: '300px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event) {
+        this.loadRiders();
+      } else {
+      }
+    });
+  }
+  updateRiderStatus(_id: String, status: String){
+    let data = {
+      _id,
+      status,
+      word: 'update rideR',
+    };
+    const dialogRef = this.dialog.open(UpdateRiderStatusComponent, {
       width: '600px',
       height: '300px',
       data: data,
@@ -166,17 +187,3 @@ export class ListRiderComponent implements OnInit {
 }
 
 
-
-// function createNewUser(id: number): UserData {
-//   const name =
-//     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-//     ' ' +
-//     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-//     '.';
-//   return {
-//     id: id.toString(),
-//     name: name,
-//     progress: Math.round(Math.random() * 100).toString(),
-//     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-//   };
-// }

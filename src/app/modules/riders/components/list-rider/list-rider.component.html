@@ -89,7 +89,7 @@
                               <mat-icon>clear</mat-icon>
                               <span>Delete Rider</span>
                             </button>
-                            <button mat-menu-item (click)="verifyRider(element._id)">
+                            <button mat-menu-item (click)="verifyRider(element._id, element.isVerified)">
                               <div *ngIf="element.isVerified; else elseBlock">
                                 <mat-icon>report</mat-icon>
                                 <span>Unverify Rider</span>
@@ -98,6 +98,18 @@
                                #elseBlock>
                                <mat-icon>how_to_reg</mat-icon>
                                <span>Verify Rider</span>
+                              </ng-template>
+                              
+                            </button>
+                            <button mat-menu-item (click)="updateRiderStatus(element._id, element.status)">
+                              <div *ngIf="element.status == 'active'; else freezeBlock">
+                                <mat-icon>report</mat-icon>
+                                <span>Freeze Rider</span>
+                              </div>
+                              <ng-template
+                               #freezeBlock>
+                               <mat-icon>how_to_reg</mat-icon>
+                               <span>Unfreeze Rider</span>
                               </ng-template>
                               
                             </button>
