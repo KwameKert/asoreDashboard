@@ -33,7 +33,7 @@
                         </p>
                         <p><b>Created On:</b> {{data.createdAt | date:'medium'}}</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" *ngIf="data.issuer">
                         <p><b>Issuer username: </b>{{data.issuer.username}}</p>
                         <p><b>Issuer email: </b>{{data.issuer.email}}</p>
                         <p><b>Issuer phone: </b>{{data.issuer.phone}}</p>
@@ -45,7 +45,8 @@
         <div class="col-6" *ngIf="data">
             <div class="card-box">
                 <h4>Order Details</h4>
-                <div class="row">
+                <div *ngIf="data.riderOrder.order;else noOrder">
+                  <div class="row">
                     <div class="col-6">
                       <p><b>Item : </b>{{ data.riderOrder.order.itemName }}</p>
                     </div>
@@ -127,6 +128,11 @@
                   <p>
                     <b>Item Details :</b>{{ data.riderOrder.order.itemDescription }} Note: {{ data.riderOrder.order.notes }}
                   </p>
+                </div>
+                <ng-template #noOrder>
+                  <p class="lead">No Order found</p>
+                </ng-template>
+                
             </div>
     
             <div class="card-box">

@@ -10,7 +10,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-6">
-                    <img class="img-thumbnail" [src]="hostUrl + data.pictureUrl" alt="">
+                    <img class="img-thumbnail" [src]="hostUrl + data.pictureUrl" alt="" *ngIf="data.pictureUrl">
+                    <img class="img-thumbnail" src="assets/images/user.png"  alt="" *ngIf="!data.pictureUrl">
                
                 </div>
                 <div class="col-6">
@@ -20,9 +21,10 @@
                             <p><b>Address:  </b> {{data.address | titlecase }}</p>
                             <p><b>Email:  </b>{{data.email }} </p>
                             <p><b>Phone: </b>{{data.phone }} </p>
-                            <p><b>Gender: </b>{{data.gender }} </p>
+                            <p><b>Username: </b>{{data.username }} </p>
                         </div>
                         <div class="col-6">
+                            <p><b>Gender: </b>{{data.gender }} </p>
                             <p><b>Date of birth:  </b> {{data.dob | date:"mediumDate"}}</p>
                             <p><b>Age:   </b>{{age }}</p>
                             <p><b>Created On: </b>{{data.createdAt | dateAgo }}</p>
@@ -30,14 +32,13 @@
                         </div>
                     </div>
                     
+                    <div class="row">
+                        <div class="col-12">
+                            <p><b>Description: </b>{{data.description }}</p>
+                        </div>
+                    </div>
 
                    
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <p><b>Description: </b>{{data.description }}</p>
                 </div>
             </div>
 
