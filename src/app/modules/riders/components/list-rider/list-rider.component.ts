@@ -109,15 +109,15 @@ export class ListRiderComponent implements OnInit {
     }
   }
 
-  deleteRider(_id: Number) {
+  deleteRider(_id: String) {
     let data = {
       model: 'rider',
       _id,
       word: 'DELETe rider',
     };
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      width: '550px',
-      height: '180px',
+      width: '650px',
+      height: '280px',
       data: data,
     });
 
@@ -184,6 +184,8 @@ export class ListRiderComponent implements OnInit {
       }
     });
   }
+
+ 
 }
 
 

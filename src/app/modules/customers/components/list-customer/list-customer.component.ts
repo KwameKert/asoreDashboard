@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 import { CustomersService } from '../../customers.service';
 import { ViewCustomerComponent } from '../view-customer/view-customer.component';
 
@@ -60,7 +61,23 @@ export class ListCustomerComponent implements OnInit {
     });
   }
 
-  deleteCustomer(id: string){
+  deleteCustomer(_id: string){
+  
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      width: '650px',
+      height: '280px',
+      data: {model: "user/customer", _id, word: "DELETE customer"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event){
+        this.loadCustomers()
+      }else{
+        // this._toastr.error("Oops an error. 🥺","",{
+        //   timeOut:2000
+        // })
+      }
+    });
 
   }
 }

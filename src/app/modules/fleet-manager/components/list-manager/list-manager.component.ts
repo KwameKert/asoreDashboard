@@ -54,7 +54,7 @@ export class ListManagerComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '650px',
       height: '280px',
-      data: {model: "user/admin", _id, word: "DELETE manager"}
+      data: {model: "user/manager", _id, word: "DELETE manager"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -89,8 +89,8 @@ export class ListManagerComponent implements OnInit {
 
   viewManager(data: any){
     const dialogRef = this.dialog.open(ViewManagerComponent, {
-      width: '800px',
-      height: '500px',
+      width: '500px',
+      height: '400px',
       data
     });
 
