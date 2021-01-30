@@ -20,17 +20,17 @@ export class AdminService extends CrudService<Admin> {
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "user/admin")
+    super(_httpClient, "user")
   }
 
   fetchAllAdmin(){
     return  this._httpClient.get<
-      ApiResponse<Admin[]>>(`${this._url}/user/admin/listAdmins`).toPromise()
+      ApiResponse<Admin[]>>(`${this._url}/user/`).toPromise()
   }
 
   addAdmin(admin: Admin){
     return  this._httpClient.post<
-      ApiResponse<User>>(`${this._url}/auth/admin/add"`, admin).toPromise()
+      ApiResponse<User>>(`${this._url}/user/"`, admin).toPromise()
   }
 
 

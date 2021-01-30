@@ -18,21 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/admin/admin.module')
                        .then(m => m.AdminModule),
     canActivate: [AuthGuard]
-  },
-  {
-    path:'support', 
-    component: SupportComponent,
-    loadChildren: () => import('./views/support/support.module')
-                       .then(m => m.SupportModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path:'manager', 
-    component: FleetManangerComponent,
-    loadChildren: () => import('./views/fleet-manager/fleet-manager.module')
-                       .then(m => m.FleetManagerModule),
-    canActivate: [AuthGuard]
-  },
+  }
 ];
 
 @NgModule({

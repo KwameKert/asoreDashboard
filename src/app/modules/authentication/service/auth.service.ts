@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   login(data: object) {
-    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/admin/login`, data)
+    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/`, data)
         .pipe(map(data => {
             localStorage.setItem('user', JSON.stringify(data.data));
             this.userSubject.next(data.data);
@@ -41,20 +41,6 @@ export class AuthService {
           return status;
         })).toPromise();
 }
-  managerLogin(data: object) {
-    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/manager/login`, data)
-        .pipe(map(data => {
-            localStorage.setItem('user', JSON.stringify(data.data));
-            this.userSubject.next(data.data);
-            return data.data;
-        })).pipe(map(status=>{
-          return status;
-        })).toPromise();
-}
-
-  loginUser(data: any ){
-    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/login`, data).toPromise();
-  }
 
   isLoggedIn() { return !!this.user }
 

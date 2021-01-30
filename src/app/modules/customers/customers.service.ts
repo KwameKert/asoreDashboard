@@ -4,14 +4,20 @@ import { environment } from 'src/environments/environment';
 import { CrudService } from '../shared/service';
 
 export interface Customer{
-  _id ?: string,
-  phone : string,
-  username: string, 
-  address: string, 
-  dob ?: Date,
+  id ?: string,
+  firstName ?: string, 
+  lastName ?: string, 
+  otherNames ?: string, 
+  placeOfBirth ?: string, 
+  placeOfResidence ?: string, 
+  contactAddress: string, 
+  dateOfBirth ?: Date,
   email: string,
-  status?: boolean,
-  isActivated: boolean,
+  numOfChildren: number,
+  confirmed: string, 
+  groupName: string, 
+  duesPaymentStatus: string,
+  maritalStatus?: string,
   createdAt: Date
 }
 
@@ -23,7 +29,7 @@ export class CustomersService extends CrudService<Customer> {
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "user")
+    super(_httpClient, "member")
   }
 
 }

@@ -12,27 +12,13 @@ export class SuperAdminComponent implements OnInit {
   pageTitle: string;
   role: string = "Administrator";
   links: Array<object> = [
-    {name: "Dashboard", icon: "md md-dashboard", url: "/admin/dashboard"},
-    {name: "Fleets", icon: "fa fa-car", url: "/", links: [{
-      name: "Fleet Managers", url: "/admin/fleet_managers"
-    },
-    {
-      name: "Riders", url: "/admin/riders"
-    }]
-  },
-    {name: "Orders", icon: "fa fa-cart-arrow-down", url: "/admin/orders"},
-    {name: "Tickets", icon: " fa fa-ticket", url: "/admin/tickets"},
+    {name: "Dashboard", icon: "md md-dashboard", url: "/admin/members"},
+   
     {name: "Users", icon: "fa  fa-users", links: [
-      {name: "Customers", url: "/admin/customers"},
+      {name: "Members", url: "/admin/members"},
       {name: "Admins", url: "/admin/admins"}
     ]},
-    {name: "Transactions", icon: "fa fa-credit-card-alt", links: [
-      {name: "Reconcilliation", url: "/admin/reconcilliation"}
-    ]},
-    {name: "Settings", icon: "fa fa-gears", links:  [
-      {name: "Pricing", url: "/admin/pricing"},
-      
-    ]}
+  
   ];
 
   headerLinks: Array<object> = [
