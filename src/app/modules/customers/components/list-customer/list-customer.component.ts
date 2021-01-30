@@ -27,7 +27,7 @@ export class ListCustomerComponent implements OnInit {
 
   async loadCustomers(){
       try{
-        let response = await this._customerService.query({status: true});
+        let response = await this._customerService.fetchAll();
         
         if(response && response.data.length !=0){
           let result = response.data;

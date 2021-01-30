@@ -24,16 +24,16 @@ const routes: Routes = [
         }
       ]
     },},
-  {path: 'customers', component: ListCustomerComponent,
+  {path: 'members', component: ListCustomerComponent,
   data: {
-    title: 'customer',
+    title: 'member',
     breadcrumb: [
       {
         label: 'home',
         url: '/admin/dashboard'
       },
       {
-        label: 'customer',
+        label: 'member',
         url: ''
       }
     ]

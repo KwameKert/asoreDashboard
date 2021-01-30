@@ -34,12 +34,17 @@ export class AuthService {
   login(data: object) {
     return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/`, data)
         .pipe(map(data => {
-            localStorage.setItem('user', JSON.stringify(data.data));
-            this.userSubject.next(data.data);
-            return data.data;
+          this.storeData(data);
+          this.userSubject.next(data.data.user);
+          return data.data;
         })).pipe(map(status=>{
           return status;
         })).toPromise();
+}
+
+storeData(response: any){
+  localStorage.setItem('user', JSON.stringify(response.data.user));
+  localStorage.setItem('token', JSON.stringify(response.data.token));
 }
 
   isLoggedIn() { return !!this.user }
