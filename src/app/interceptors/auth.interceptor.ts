@@ -31,7 +31,8 @@ import { ToastrService } from 'ngx-toastr';
           tap((response: HttpResponse<any>) => {
             // let message = response.body.message
             // console.log(message)
-            switch (response.status) {
+             if(response.type !=0){
+            switch (response.body.status) {
               
               case 201: //Created
                this._toastr.success("Record added successfully","Success  👍");
@@ -50,6 +51,7 @@ import { ToastrService } from 'ngx-toastr';
               default:
                 break;
             }
+          }
           }, err => {
             switch (err.status) {
               case 401: //Unauthorized

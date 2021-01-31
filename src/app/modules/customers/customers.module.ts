@@ -4,11 +4,12 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
 import { ListCustomerComponent } from './components/list-customer/list-customer.component';
 import { ViewCustomerComponent } from './components/view-customer/view-customer.component';
 import { SharedModule } from '../shared/shared.module';
+import { AddMemberComponent } from './components/add-member/add-member.component';
 
 
 
 @NgModule({
-  declarations: [AddCustomerComponent, ListCustomerComponent, ViewCustomerComponent],
+  declarations: [AddCustomerComponent, ListCustomerComponent, ViewCustomerComponent, AddMemberComponent],
   imports: [
     CommonModule,
     SharedModule

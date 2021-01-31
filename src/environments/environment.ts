@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-api_host : "http://localhost:8080/api/v1"
+  api_host : "https://asore-api.herokuapp.com/api/v1"
 //  api_host : "http://api.thinksophtlabs.com:3000/api"
   //api_host : "https://safehandsapp.co/api"
 };

@@ -1,24 +1,33 @@
 
-<h3 mat-dialog-title>View Customer 
-    <span *ngIf="data.status == true" class="badge badge-warning"> active </span> 
-    <span *ngIf="data.status == false" class="badge badge-success">inactive </span>
+<h3 mat-dialog-title>View Member 
+  
 </h3>
 <hr>
 <div mat-dialog-content class="container">
     <div  class="row justify-content-center pt-4 ">
 
         <div class="col-6">
-            <p ><b>Username: </b>{{data.username}}</p>
-            <p ><b>Phone: </b>{{data.phone}}</p>
+            <p ><b>First Name: </b>{{data.firstName}}</p>
+            <p ><b>Last Name: </b>{{data.lastName}}</p>
+            <p ><b>Other Names: </b>{{data.otherNames}}</p>
+            <p ><b>Contact Address: </b>{{data.contactAddress}}</p>
+            <p ><b>Occupation: </b>{{data.occupation}}</p>
             <p ><b>Email: </b>{{data.email}}</p>
-            <p ><b>Gender: </b>{{data.gender}}</p>
+            <p ><b>Marital Status: </b>{{data.maritalStatus}}</p>
+            <p ><b>Group: </b>{{data.groupName}}</p>
            
             <!-- <p >Created At: {{data.createdAt | date:'fullDate'}}</p> -->
             
         </div>
 
         <div class="col-6">
-            <p ><b>Date of Birth: </b>{{data.dob | date }}</p>
+            <p ><b>Date of Birth: </b>{{data.dateOfBirth | date }}</p>
+            <p ><b>Place of Birth: </b>{{data.placeOfBirth  }}</p>
+            <p ><b>Place of Residence: </b>{{data.placeOfResidence  }}</p>
+            <p ><b> Number of Children : </b>{{data.numOfChildren  }}</p>
+            <p ><b>Place of baptism: </b>{{data.placeOfBaptism }}</p>
+            <p ><b>Confirmed: </b>{{data.confirmed }}</p>
+            <p ><b>Dues Payment Status: </b>{{data.duesPaymentStatus }}</p>
             <p ><b>Created At: </b>{{data.createdAt | dateAgo}}</p>
         </div>
  

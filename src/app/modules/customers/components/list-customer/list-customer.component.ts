@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 import { CustomersService } from '../../customers.service';
+import { AddMemberComponent } from '../add-member/add-member.component';
 import { ViewCustomerComponent } from '../view-customer/view-customer.component';
 
 @Component({
@@ -16,10 +18,10 @@ export class ListCustomerComponent implements OnInit {
   isLoading: boolean = false; 
   isEmpty: boolean = false;
   dataSource: MatTableDataSource<any> = null;
-  displayedColumns: any = ['username', 'email', 'createdAt','status', 'actions']
+  displayedColumns: any = ['fullName', 'email','maritalStatus','occupation', 'createdAt', 'actions']
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private _customerService: CustomersService,  public dialog: MatDialog) { }
+  constructor(private _customerService: CustomersService,  public dialog: MatDialog, private _router: Router) { }
 
   ngOnInit(): void {
     this.loadCustomers();
@@ -50,8 +52,8 @@ export class ListCustomerComponent implements OnInit {
 
   viewCustomer(data: any){
     const dialogRef = this.dialog.open(ViewCustomerComponent, {
-      width: '600px',
-      height: '300px',
+      width: '800px',
+      height: '430px',
       data
     });
 
@@ -66,7 +68,7 @@ export class ListCustomerComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '650px',
       height: '280px',
-      data: {model: "user/customer", _id, word: "DELETE customer"}
+      data: {model: "member", _id, word: "DELETE member"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -79,5 +81,12 @@ export class ListCustomerComponent implements OnInit {
       }
     });
 
+  }
+
+  addMember(){
+   this._router.navigate(['/admin/add-member'])
+  }
+  editMember(id){
+   this._router.navigate([`/admin/add-member/${id}`])
   }
 }

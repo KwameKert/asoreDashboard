@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Customer } from '../../customers.service';
 
 @Component({
   selector: 'app-view-customer',
@@ -10,7 +11,7 @@ export class ViewCustomerComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ViewCustomerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: Customer) { }
    
 
   ngOnInit() {

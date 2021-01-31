@@ -50,7 +50,7 @@ ngOnInit() {
                 break;     
             default:
               this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});
-              return this._router.navigate(['./admin/dashboard'])  
+              return this._router.navigate(['./admin/members'])  
         }
       }
   }catch(error){

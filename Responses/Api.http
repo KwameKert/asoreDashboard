@@ -1,0 +1,13 @@
+@host = https://asore-api.herokuapp.com/api/v1
+
+### Post Setting
+POST {{host}}/user/
+Content-Type: application/json
+
+{
+   	"username": "adminee",
+	"email": "admin@gmail.com",
+	"password": "adminPass",
+	"fullName": "administrator",
+	"role": "ADMIN"
+}
