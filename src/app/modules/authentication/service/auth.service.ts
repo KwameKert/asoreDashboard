@@ -32,6 +32,7 @@ export class AuthService {
   }
 
   login(data: object) {
+    this.removeUserDetails();
     return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/`, data)
         .pipe(map(data => {
           this.storeData(data);
@@ -60,9 +61,14 @@ storeData(response: any){
 
   logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('user');
+    this.removeUserDetails();
     this.userSubject.next(null);
     this.router.navigate(['/login']);
 }
+
+  removeUserDetails(){
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  }
 
 }
