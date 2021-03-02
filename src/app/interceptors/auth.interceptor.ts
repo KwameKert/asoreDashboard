@@ -39,7 +39,7 @@ import { ToastrService } from 'ngx-toastr';
                 break;
               case 200: //Success
                 switch (req.method) {
-                  case 'PATCH':
+                  case 'PUT':
                     this._toastr.success("Record updated successfully","Success  👍");
                     break;
                   case 'DELETE':

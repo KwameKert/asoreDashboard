@@ -39,7 +39,7 @@ export class MemberService extends CrudService<Member> {
   }
 
   public updateMember(data: any){
-    return this._httpClient.patch<ApiResponse<any>>(`${this._url}/member`, data).toPromise();
+    return this._httpClient.put<ApiResponse<any>>(`${this._url}/member`, data).toPromise();
   }
   public addMember(data: any){
     return this._httpClient.post<ApiResponse<any>>(`${this._url}/member`, data).toPromise();

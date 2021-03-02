@@ -109,18 +109,17 @@ export class AddMemberComponent implements OnInit {
       for(let key of Object.keys(this.memberForm.value)){
         this.formData.append(key,this.memberForm.value[key] )
       }
-  
+      
      // console.log(this.formData)
-     console.log("memeber data ", this.memberData)
+      console.log("memeber data ", this.memberData)
       if (this.memberData != null) {
-        console.log("updating")
+        
        result = await this.customerService.updateMember(this.formData);
       } else {
        result = await this.customerService.addMember(this.formData);
       }
-      console.log(result);
-      if (result.status == 201 || result.status == 200) {
-      }
+      this.listMembers();
+      
     } catch (e) {
       console.error(e);
     } finally {

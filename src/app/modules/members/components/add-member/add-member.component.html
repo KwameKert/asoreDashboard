@@ -1,12 +1,12 @@
 <div class="card-box">
     <h4 class="text-dark header-title">Customer List  
 
-        <button
+        <!-- <button
       (click)="listMembers()"
       class="btn btn-info mt-0 waves-effect waves-light float-right"
     >
       <i class="mdi mdi-clipboard-plus mr-1"></i> List Members
-    </button>
+    </button> -->
     </h4>
       
 <div class="row">
@@ -14,7 +14,7 @@
     <img class="img-thumbnail mt-2" [src]="pictureUrl" alt="" >
 
   </div>
-  <div class="col-sm-12 col-xl-9 col-lg-9">
+  <div class="col-sm-12 col-xl-9 col-lg-9 container">
    
         <form [formGroup]="memberForm" (ngSubmit)="saveMember()">
           <div mat-dialog-content class="container">
