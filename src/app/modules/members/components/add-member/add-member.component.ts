@@ -54,10 +54,10 @@ export class AddMemberComponent implements OnInit {
       email: '',
       weddingDate: '',
       occupation: '',
-      maritalStatus: '',
+      maritalStatus: 'Single',
       numOfChildren: '',
       placeOfBaptism: '',
-      confirmed: '',
+      confirmed: 'yes',
       groupName: '',
       duesPaymentStatus: '',
     });
@@ -86,12 +86,12 @@ export class AddMemberComponent implements OnInit {
       firstName: data.firstName,
       lastName: data.lastName,
       otherNames: data.otherNames,
-      dateOfBirth: data.dateOfBirth,
+      dateOfBirth: this.convertTimestampToDate(data.dateOfBirth),
       placeOfBirth: data.placeOfBirth,
       placeOfResidence:  data.placeOfResidence,
       contactAddress: data.contactAddress,
       email: data.email,
-      weddingDate: data.weddingDate,
+      weddingDate:  this.convertTimestampToDate(data.weddingDate),
       occupation: data.occupation,
       maritalStatus: data.maritalStatus,
       numOfChildren: data.numOfChildren,
@@ -155,7 +155,16 @@ export class AddMemberComponent implements OnInit {
     reader.onload = (_event) => { 
       this.pictureUrl = reader.result; 
     }
+    }
 
-    
+    convertTimestampToDate(date) {
+      var timestamp = new Date(date).getTime();
+      var day = new Date(timestamp).getDate();
+      var month = new Date(timestamp).getMonth() + 1;
+      var todate = day < 10 ? '0' + day : day;
+      var tomonth = month < 10 ? '0' + month : month;
+      var toyear = new Date(timestamp).getFullYear();
+      return `${toyear}-${tomonth}-${todate}`;
+      // console.log(original_date)
     }
 }
