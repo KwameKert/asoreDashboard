@@ -9,14 +9,16 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-
+  pictureUrl: any = "assets/images/avatar.jpg";
   Highcharts: typeof Highcharts = Highcharts;
   reconcilliations: Array<any>;
-  totalRevenue: number ;
-  totalOrders: number;
-  totalRiders: number;
-  totalUsers: number;
-  //Highcharts: typeof Highcharts = Highcharts;
+  confirmedMembers: number ;
+  totalMembers: number;
+  totalConfirmed: number;
+  males: number;
+  females: number;
+  birthdays: Array<any>;
+  anniversaries: Array<any>;
   barChartOptions: object;
   totalUnresolvedTickets: number;
 
@@ -36,14 +38,13 @@ export class AdminComponent implements OnInit {
       let response = await this._dashboardService.fetchComponents();
       if (response) {
         let results = response.data;
-        this.totalOrders = results.totalOrders;
-        this.totalRiders = results.totalRiders;
-        this.totalUsers = results.totalUsers;
-        this.totalUnresolvedTickets = results.totalUnresolvedTickets;
-        this.reconcilliations = results.latestReconcilliations;
-        this.totalRevenue = results.totalRevenue;
-        console.log(this.reconcilliations)
-        this.loadCharts(results.tickets);
+        this.totalMembers = results.totalMembers;
+        this.confirmedMembers = results.confirmedMembers;
+        this.males = results.males;
+        this.females = results.females;
+        this.birthdays = results.birthdays;
+        this.anniversaries = results.weddingAnniversaries
+        this.loadCharts();
         //this.reconcilliations = results.latestReconcilliations;
       }
     } catch (error) {
@@ -51,7 +52,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  loadCharts(tickets) {
+  loadCharts() {
     return this.barChartOptions = {
         chart: {
           plotBackgroundColor: null,
@@ -59,7 +60,7 @@ export class AdminComponent implements OnInit {
           plotShadow: false
         },
         title: {
-          text: `<strong>${tickets.totalTickets}<br> tickets</strong>`,
+          text: `<strong>${this.totalMembers}<br> members</strong>`,
           align: 'center',
           verticalAlign: 'middle',
           y: 0
@@ -91,23 +92,16 @@ export class AdminComponent implements OnInit {
         },
         series: [
           {
-            name: 'Tickets',
+            name: 'Members',
             data: [
             
               {
-                name: 'Opened',
-                y: tickets.totalOpenedTickets,
+                name: 'Females',
+                y: this.females,
               }, 
               {
-                name: 'Pending',
-                y: tickets.totalPendingTickets
-              },
-               {
-                name: 'Resolved',
-                y: tickets.totalResolvedTickets
-              },{
-                name: 'Processing',
-                y: tickets.totalProcessingTickets,
+                name: 'Males',
+                y: this.males
               }],
             type: 'pie',
             innerSize: '70%',

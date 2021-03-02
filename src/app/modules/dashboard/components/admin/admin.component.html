@@ -1,93 +1,105 @@
 <div class="row">
-      <div class="col-md-6 col-lg-6 col-xl-3">
-          <div class="widget-bg-color-icon card-box">
-              <div class="bg-icon bg-info pull-left">
-                  <i class="md  md-shopping-cart text-white"></i>
+    <div class="col-md-6 col-lg-6 col-xl-8">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 ">
+                <div class="widget-bg-color-icon card-box">
+                    <div class="bg-icon bg-purple pull-left">
+                        <i class="md  md-account-box text-white"></i>
+                    </div>
+                    <div class="text-right">
+                        <h3 class="text-dark">{{totalMembers}}</h3>
+                        <p class="text-muted mb-0">Members</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div> 
+              <div class="col-md-6 col-lg-6 ">
+                  <div class="widget-bg-color-icon card-box">
+                      <div class="bg-icon bg-info pull-left">
+                          <i class="md  md-check text-white"></i>
+                      </div>
+                      <div class="text-right">
+                          <h3 class="text-dark">{{confirmedMembers}}</h3>
+                          <p class="text-muted mb-0">Confirmed Members</p>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
               </div>
-              <div class="text-right">
-                  <h3 class="text-dark">{{totalOrders}}</h3>
-                  <p class="text-muted mb-0">Total Orders</p>
-              </div>
-              <div class="clearfix"></div>
-          </div>
+        </div>
+        <div class="row">
+                <div class="col-12">
+                    <div class="card-box" *ngIf="barChartOptions">
+                      <h4 class="text-dark header-title m-t-0">Gender Charts</h4>
+                      <highcharts-chart 
+                [Highcharts]="Highcharts"
+                [options]="barChartOptions"
+              
+                style="width: 100%; height: 400px; display: block;"
+              ></highcharts-chart>
+                    </div>
+                  
+                </div>
+        </div>
+
+
+    </div>
+   
+
+      <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="card   border-success text-xs-center">
+                <div class="card-header">
+                    Birthday Aniversaries
+                </div>
+                <div class="card-body">
+                    <div *ngIf="birthdays;else no_birthday">
+                        <div class="contact-card" *ngFor="let day of birthdays ">
+                            <a class="pull-left" href="#">
+                                <img class="rounded-circle" [src]="day.imageUrl" alt="" *ngIf="day.imageUrl">
+                                <img class="rounded-circle" [src]=" pictureUrl" alt=""  *ngIf="!day.imageUrl">
+                            </a>
+                            <div class="member-info">
+                                <h4 class="m-t-0 m-b-5 header-title"><b>{{day.firstName | titlecase}} {{day.lastName | titlecase}} </b></h4>
+                                <p class="text-muted">{{day.occupation}}</p>
+                                <p class="text-dark"><i class="md md-phone m-r-10"></i><small><span *ngIf="day.contactPhone">{{day.contactPhone}}</span> <span *ngIf="!day.contactPhone">No phone</span></small></p>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    <ng-template #no_birthday>No birthdays available</ng-template>
+                  
+                </div>
+            </div>
+            <div class="card mt-4 border-info text-xs-center">
+                <div class="card-header">
+                    Wedding Aniversaries
+                </div>
+                <div class="card-body">
+                    <div *ngIf="anniversaries;else no_anniversaries">
+                        <div class="contact-card" *ngFor="let day of anniversaries ">
+                            <a class="pull-left" href="#">
+                                <img class="rounded-circle" [src]="day.imageUrl" alt="" *ngIf="day.imageUrl">
+                                <img class="rounded-circle" [src]=" pictureUrl" alt=""  *ngIf="!day.imageUrl">
+                            </a>
+                            <div class="member-info">
+                                <h4 class="m-t-0 m-b-5 header-title"><b>{{day.firstName | titlecase}} {{day.lastName | titlecase}} </b></h4>
+                                <p class="text-muted">{{day.occupation}}</p>
+                                <p class="text-dark"><i class="md md-phone m-r-10"></i><small><span *ngIf="day.contactPhone">{{day.contactPhone}}</span> <span *ngIf="!day.contactPhone">No phone</span></small></p>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    <ng-template #no_anniversaries>No anniversaries available</ng-template>
+                  
+                </div>
+            </div>
       </div>
 
-      <div class="col-md-6 col-lg-6 col-xl-3">
-          <div class="widget-bg-color-icon card-box">
-              <div class="bg-icon bg-pink pull-left">
-                  <i class="md  md-directions-car text-white"></i>
-              </div>
-              <div class="text-right">
-                  <h3 class="text-dark">{{totalRiders}} </h3>
-                  <p class="text-muted mb-0">Total Riders</p>
-              </div>
-              <div class="clearfix"></div>
-          </div>
-      </div>
 
-      <div class="col-md-6 col-lg-6 col-xl-3">
-          <div class="widget-bg-color-icon card-box">
-              <div class="bg-icon bg-purple pull-left">
-                  <i class="md  md-account-box text-white"></i>
-              </div>
-              <div class="text-right">
-                  <h3 class="text-dark">{{totalUsers}}</h3>
-                  <p class="text-muted mb-0">Customers</p>
-              </div>
-              <div class="clearfix"></div>
-          </div>
-      </div>
-
-      <div class="col-md-6 col-lg-6 col-xl-3">
-          <div class="widget-bg-color-icon card-box">
-              <div class="bg-icon bg-success pull-left">
-                  <i class="md    md-account-balance-wallet
-                  text-white"></i>
-              </div>
-              <div class="text-right">
-                  <h3 class="text-dark">{{totalRevenue | currency: ' '}}</h3>
-                  <p class="text-muted mb-0">Total Revenue</p>
-              </div>
-              <div class="clearfix"></div>
-          </div>
-      </div>
   </div> 
 
 
-  <div class="row">
-      <div class="col-5">
-          <div class="card-box" *ngIf="barChartOptions">
-            <h4 class="text-dark header-title m-t-0">Total Tickets</h4>
-            <highcharts-chart 
-      [Highcharts]="Highcharts"
-      [options]="barChartOptions"
-    
-      style="width: 100%; height: 400px; display: block;"
-    ></highcharts-chart>
-          </div>
-        
-      </div>
 
-       <div class="col-7">
-          <div class="card-box" *ngIf="reconcilliations">
-            <h4 class="text-dark header-title m-t-0">Latest Transactions</h4>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Rider</th>
-                    <th>Amount</th>
-                    <th>Created At</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let reconcile of reconcilliations"  [ngClass]="reconcile.status == 'PENDING' ? 'text-danger' : 'text-success'">
-                        <td >  {{reconcile.rider.firstName | titlecase}}  {{reconcile.rider.firstName | titlecase}}</td>
-                        <td>{{reconcile.amount}} </td>
-                        <td>{{reconcile.createdAt | dateAgo }}</td>                 
-                </tr>
-              
-                </tbody>
-            </table>
-          </div>
-      </div> 
-  </div>

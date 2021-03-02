@@ -53,7 +53,7 @@ export class ListMemberComponent implements OnInit {
   viewCustomer(data: any){
     const dialogRef = this.dialog.open(ViewMemberComponent, {
       width: '900px',
-      height: '430px',
+      height: '480px',
       data
     });
 

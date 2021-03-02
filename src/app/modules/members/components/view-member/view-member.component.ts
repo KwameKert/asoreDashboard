@@ -9,7 +9,7 @@ import { Member } from '../../members.service';
 })
 export class ViewMemberComponent implements OnInit {
   pictureUrl: any = "assets/images/avatar.jpg";
-  apiUrl: string = "http://localhost:8080/files/"
+  apiUrl: string = ""
 
   constructor(
     public dialogRef: MatDialogRef<ViewMemberComponent>,

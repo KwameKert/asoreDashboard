@@ -108,15 +108,15 @@
                   class="form-group"
                   [ngClass]="{
                     'has-error':
-                      memberForm.get('occupation').touched &&
-                      !memberForm.get('occupation').valid
+                      memberForm.get('contactPhone').touched &&
+                      !memberForm.get('contactPhone').valid
                   }"
                 >
-                  <label for="name">Occupation</label>
+                  <label for="name">Contact Phone</label>
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="occupation"
+                    formControlName="contactPhone"
                   />
                 </div>
               </div>
@@ -220,20 +220,60 @@
                 </div>
               </div>
               <div class="col-6">
+
+                <div
+                class="form-group"
+                [ngClass]="{
+                  'has-error':
+                    memberForm.get('occupation').touched &&
+                    !memberForm.get('occupation').valid
+                }"
+              >
+                <label for="name">Occupation</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="occupation"
+                />
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
                 <div
                   class="form-group"
                   [ngClass]="{
                     'has-error':
-                      memberForm.get('groupName').touched &&
-                      !memberForm.get('groupName').valid
+                      memberForm.get('placeOfResidence').touched &&
+                      !memberForm.get('placeOfResidence').valid
                   }"
                 >
-                  <label for="name">Group</label>
+                  <label for="name">Place of Residence</label>
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="groupName"
+                    formControlName="placeOfResidence"
                   />
+                </div>
+              </div>
+              <div class="col-6">
+                <div
+                  class="form-group"
+                  [ngClass]="{
+                    'has-error':
+                      memberForm.get('gender').touched &&
+                      !memberForm.get('gender').valid
+                  }"
+                >
+                  <label for="name">Gender</label>
+                  <select
+                  name="category"
+                  formControlName="gender"
+                  class="form-control"
+                >
+                  <option value="Male" selected>Male</option>
+                  <option value="Female" >Female</option>
+                </select>
                 </div>
               </div>
             </div>
@@ -305,7 +345,7 @@
                   </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div
                     class="form-group"
                   >
@@ -316,6 +356,25 @@
                       name="filename" (change)="imageProgress($event)" #imageHolder
                     />
                   </div>
+                </div>
+
+                <div class="col-6">
+               
+                  <div
+                  class="form-group"
+                  [ngClass]="{
+                    'has-error':
+                      memberForm.get('groupName').touched &&
+                      !memberForm.get('groupName').valid
+                  }"
+                >
+                  <label for="name">Group</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="groupName"
+                  />
+                </div>
                 </div>
             </div>
           </div>

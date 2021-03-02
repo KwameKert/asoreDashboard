@@ -12,12 +12,9 @@ export class SuperAdminComponent implements OnInit {
   pageTitle: string;
   role: string = "Administrator";
   links: Array<object> = [
-    {name: "Dashboard", icon: "md md-dashboard", url: "/admin/members"},
+    {name: "Dashboard", icon: "md md-dashboard", url: "/admin/dashboard"},
    
-    {name: "Users", icon: "fa  fa-users", links: [
-      {name: "Members", url: "/admin/members"},
-      {name: "Admins", url: "/admin/admins"}
-    ]},
+    {name: "Members", icon: "fa  fa-users", url: "/admin/members"},
   
   ];
 

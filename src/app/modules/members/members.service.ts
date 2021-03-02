@@ -24,6 +24,8 @@ export interface Member{
   groupName: string, 
   duesPaymentStatus: string,
   maritalStatus?: string,
+  gender?: string,
+  contactPhone?: string,
   createdAt: Date
 }
 
