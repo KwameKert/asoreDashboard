@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from 'src/app/modules/dashboard';
 import { ListAdminComponent } from 'src/app/modules/admins/components/list-admin/list-admin.component';
-import { ListCustomerComponent } from 'src/app/modules/customers/components/list-customer/list-customer.component';
+import { ListMemberComponent } from 'src/app/modules/members/components/list-member/list-member.component';
 import { UpdateProfileComponent } from 'src/app/modules/profile/components/update-profile/update-profile.component';
 import { ChangePasswordComponent } from 'src/app/modules/profile/components/change-password/change-password.component';
-import { AddMemberComponent } from 'src/app/modules/customers/components/add-member/add-member.component';
+import { AddMemberComponent } from 'src/app/modules/members/components/add-member/add-member.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: AdminComponent },
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'members',
-    component: ListCustomerComponent,
+    component: ListMemberComponent,
     data: {
       title: 'member',
       breadcrumb: [

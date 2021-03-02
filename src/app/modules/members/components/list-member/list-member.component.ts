@@ -4,16 +4,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
-import { CustomersService } from '../../customers.service';
+import { MemberService } from '../../members.service';
 import { AddMemberComponent } from '../add-member/add-member.component';
-import { ViewCustomerComponent } from '../view-customer/view-customer.component';
+import { ViewMemberComponent } from '../view-member/view-member.component';
 
 @Component({
-  selector: 'app-list-customer',
-  templateUrl: './list-customer.component.html',
-  styleUrls: ['./list-customer.component.scss']
+  selector: 'app-list-member',
+  templateUrl: './list-member.component.html',
+  styleUrls: ['./list-member.component.scss']
 })
-export class ListCustomerComponent implements OnInit {
+export class ListMemberComponent implements OnInit {
 
   isLoading: boolean = false; 
   isEmpty: boolean = false;
@@ -21,7 +21,7 @@ export class ListCustomerComponent implements OnInit {
   displayedColumns: any = ['fullName', 'email','maritalStatus','occupation', 'createdAt', 'actions']
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private _customerService: CustomersService,  public dialog: MatDialog, private _router: Router) { }
+  constructor(private _customerService: MemberService,  public dialog: MatDialog, private _router: Router) { }
 
   ngOnInit(): void {
     this.loadCustomers();
@@ -51,8 +51,8 @@ export class ListCustomerComponent implements OnInit {
 
 
   viewCustomer(data: any){
-    const dialogRef = this.dialog.open(ViewCustomerComponent, {
-      width: '800px',
+    const dialogRef = this.dialog.open(ViewMemberComponent, {
+      width: '900px',
       height: '430px',
       data
     });
@@ -84,6 +84,7 @@ export class ListCustomerComponent implements OnInit {
   }
 
   addMember(){
+    console.log("Im here")
    this._router.navigate(['/admin/add-member'])
   }
   editMember(id){

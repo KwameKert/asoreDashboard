@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiResponse } from 'src/app/models/ApiResponse';
 import { environment } from 'src/environments/environment';
 import { CrudService } from '../shared/service';
 
-export interface Customer{
+export interface Member{
   id ?: string,
   firstName ?: string, 
   lastName ?: string, 
+  weddingDate?: Date,
+  fileUrl?: string,
+  imageUrl?: string,
   otherNames ?: string, 
   placeOfBirth ?: string, 
   placeOfResidence ?: string, 
@@ -27,11 +31,18 @@ export interface Customer{
 @Injectable({
   providedIn: 'root'
 })
-export class CustomersService extends CrudService<Customer> {
+export class MemberService extends CrudService<Member> {
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
     super(_httpClient, "member")
+  }
+
+  public updateMember(data: any){
+    return this._httpClient.patch<ApiResponse<any>>(`${this._url}/member`, data).toPromise();
+  }
+  public addMember(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/member`, data).toPromise();
   }
 
 }
