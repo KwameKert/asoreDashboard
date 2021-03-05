@@ -17,8 +17,8 @@ export class AdminComponent implements OnInit {
   totalConfirmed: number;
   males: number;
   females: number;
-  birthdays: Array<any>;
-  anniversaries: Array<any>;
+  birthdays: Array<any> = null;
+  anniversaries: Array<any> = null;
   barChartOptions: object;
   totalUnresolvedTickets: number;
 
@@ -42,8 +42,8 @@ export class AdminComponent implements OnInit {
         this.confirmedMembers = results.confirmedMembers;
         this.males = results.males;
         this.females = results.females;
-        this.birthdays = results.birthdays;
-        this.anniversaries = results.weddingAnniversaries
+        this.birthdays = results.birthdays.length >0? results.birthdays: null;
+        this.anniversaries = results.weddingAnniversaries.length >0 ?results.weddingAnniversaries: null;
         this.loadCharts();
         //this.reconcilliations = results.latestReconcilliations;
       }
