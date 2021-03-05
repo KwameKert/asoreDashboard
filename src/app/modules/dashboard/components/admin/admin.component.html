@@ -51,7 +51,7 @@
                     Birthday Aniversaries
                 </div>
                 <div class="card-body">
-                    <div *ngIf="birthdays;else no_birthday">
+                    <div *ngIf="birthdays.length == 0;else no_birthday">
                         <div class="contact-card" *ngFor="let day of birthdays ">
                             <a class="pull-left" href="#">
                                 <img class="rounded-circle" [src]="day.imageUrl" alt="" *ngIf="day.imageUrl">
@@ -76,7 +76,7 @@
                     Wedding Aniversaries
                 </div>
                 <div class="card-body">
-                    <div *ngIf="anniversaries;else no_anniversaries">
+                    <div *ngIf="anniversaries.length == 0;else no_anniversaries">
                         <div class="contact-card" *ngFor="let day of anniversaries ">
                             <a class="pull-left" href="#">
                                 <img class="rounded-circle" [src]="day.imageUrl" alt="" *ngIf="day.imageUrl">
