@@ -112,6 +112,7 @@ export class AddMemberComponent implements OnInit {
     this.ngxService.start();
     try {
       let result;
+      
       for(let key of Object.keys(this.memberForm.value)){
         this.formData.append(key,this.memberForm.value[key] )
       }
@@ -138,10 +139,12 @@ export class AddMemberComponent implements OnInit {
   }
 
   imageProgress(fileInput: any) {
+
     this.fileData = <File>fileInput.target.files[0];
     this.formData.append('image', this.fileData, this.fileData.name);
     this.preview();
   }
+
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     this.formData.append('file', this.fileData, this.fileData.name);
